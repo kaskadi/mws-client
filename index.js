@@ -31,7 +31,7 @@ const MWS_DEFAULT_OPTIONS = {
 
 class MWS {
   constructor (opt) {
-    let options = { ...MWS_DEFAULT_OPTIONS, ...opt }
+    const options = { ...MWS_DEFAULT_OPTIONS, ...opt }
     this.SignatureVersion = options.SignatureVersion
     this.SignatureMethod = options.SignatureMethod
     this.AWSAccessKeyId = options.AWSAccessKeyId
@@ -52,6 +52,7 @@ class MWS {
     this.sellers = require('./api/Sellers.js')(this)
     this.subscriptions = require('./api/Subscriptions.js')(this)
   }
+
   request (opt) {
     const MarketplaceId = MARKETPLACE[opt._marketplace].id
     const MarketplaceEndpoint = MARKETPLACE[opt._marketplace].endpoint
@@ -76,7 +77,7 @@ class MWS {
 ${MarketplaceEndpoint}
 /${opt._section}/${opt.Version}
 ${querystring.stringify(rqs)}`
-// ------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------
     stringToSign = stringToSign.replace(/'/g, '%27')
     stringToSign = stringToSign.replace(/\*/g, '%2A')
     stringToSign = stringToSign.replace(/\(/g, '%28')
@@ -85,8 +86,9 @@ ${querystring.stringify(rqs)}`
 
     return makeRequest(`https://${MarketplaceEndpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`, httpMethod, null, this.userAgent)
   }
+
   _filterObject (obj) {
-    let newObj = {}
+    const newObj = {}
     Object.entries(obj).forEach(function (entry) {
       if (entry[0].charAt(0) !== '_') {
         newObj[entry[0]] = entry[1]
@@ -94,15 +96,16 @@ ${querystring.stringify(rqs)}`
     })
     return newObj
   }
+
   _sortObject (obj) {
-    let newObj = {}
-    let arr = Object.keys(obj).sort()
+    const newObj = {}
+    const arr = Object.keys(obj).sort()
     arr.forEach(key => { newObj[key] = obj[key] })
     return newObj
   }
 
   _sign (str, key) {
-    let hmac = crypto.createHmac('sha256', key)
+    const hmac = crypto.createHmac('sha256', key)
     hmac.update(str)
     return hmac.digest('base64')
   }

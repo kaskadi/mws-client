@@ -5,33 +5,34 @@ class FulfillmentInventory extends Section {
     this._section = 'FulfillmentInventory'
     this.Version = '2010-10-01'
   }
+
   listInventorySupply (opt) {
     opt.Action = 'ListInventorySupply'
-    if (parent.mockUp) {
+    if (this.parent.mockUp) {
       return {
         ListInventorySupplyResponse: {
-          xmlns: "http://mws.amazonaws.com/FulfillmentInventory/2010-10-01",
+          xmlns: 'http://mws.amazonaws.com/FulfillmentInventory/2010-10-01',
           ListInventorySupplyResult: {
             InventorySupplyList: {
               member: [
                 {
-                  SellerSKU: "SampleSKU1",
-                  ASIN: "B00000K3CQ",
+                  SellerSKU: 'SampleSKU1',
+                  ASIN: 'B00000K3CQ',
                   TotalSupplyQuantity: 20,
-                  FNSKU: "X0000000FM",
-                  Condition: "NewItem",
+                  FNSKU: 'X0000000FM',
+                  Condition: 'NewItem',
                   SupplyDetail: {},
                   InStockSupplyQuantity: 15,
                   EarliestAvailability: {
-                    TimepointType: "Immediately"
+                    TimepointType: 'Immediately'
                   }
                 },
                 {
-                  SellerSKU: "SampleSKU2",
-                  ASIN: "B00004RWQR",
+                  SellerSKU: 'SampleSKU2',
+                  ASIN: 'B00004RWQR',
                   TotalSupplyQuantity: 0,
-                  FNSKU: "X00008FZR1",
-                  Condition: "UsedLikeNew",
+                  FNSKU: 'X00008FZR1',
+                  Condition: 'UsedLikeNew',
                   SupplyDetail: {},
                   InStockSupplyQuantity: 0
                 }
@@ -39,7 +40,7 @@ class FulfillmentInventory extends Section {
             }
           },
           ResponseMetadata: {
-            RequestId: "e8698ffa-8e59-11df-9acb-230ae7a8b736"
+            RequestId: 'e8698ffa-8e59-11df-9acb-230ae7a8b736'
           }
         }
       }
@@ -47,6 +48,7 @@ class FulfillmentInventory extends Section {
       return this.request(opt)
     }
   }
+
   getServiceStatus (opt) {
     opt.Action = 'GetServiceStatus'
     return this.request(opt)

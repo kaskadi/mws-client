@@ -5,41 +5,42 @@ class Finances extends Section {
     this._section = 'Finances'
     this.Version = '2015-05-01'
   }
+
   listFinancialEventGroups (opt) {
     opt.Action = 'ListFinancialEventGroups'
-    if (parent.mockUp) {
+    if (this.parent.mockUp) {
       return {
         ListFinancialEventGroupsResponse: {
-          xmlns: "https://mws.amazonservices.com/Finances/2015-05-01",
+          xmlns: 'https://mws.amazonservices.com/Finances/2015-05-01',
           ListFinancialEventGroupsResult: {
-            NextToken: "2YgYW55IGNhcm5hbCBwbGVhcEXAMPLE",
+            NextToken: '2YgYW55IGNhcm5hbCBwbGVhcEXAMPLE',
             FinancialEventGroupList: {
               FinancialEventGroup: {
-                FinancialEventGroupId: "22YgYW55IGNhcm5hbCBwbGVhEXAMPLE",
-                ProcessingStatus: "Closed",
-                FundTransferStatus: "Successful",
+                FinancialEventGroupId: '22YgYW55IGNhcm5hbCBwbGVhEXAMPLE',
+                ProcessingStatus: 'Closed',
+                FundTransferStatus: 'Successful',
                 OriginalTotal: {
-                  CurrencyCode: "USD",
+                  CurrencyCode: 'USD',
                   Amount: 19.00
                 },
                 ConvertedTotal: {
-                  CurrencyCode: "USD",
+                  CurrencyCode: 'USD',
                   Amount: 19.00
                 },
-                FundTransferDate: "2014-09-09T01:30:00.000-06:00",
-                TraceId: "128311029381HSADJEXAMPLE",
-                AccountTail: "1212",
+                FundTransferDate: '2014-09-09T01:30:00.000-06:00',
+                TraceId: '128311029381HSADJEXAMPLE',
+                AccountTail: '1212',
                 BeginningBalance: {
-                  CurrencyCode: "USD",
+                  CurrencyCode: 'USD',
                   Amount: 0.00
                 },
-                FinancialEventGroupStart: "2014-09-01T01:30:00.000-06:00",
-                FinancialEventGroupEnd: "2014-09-09T01:30:00.000-06:00"
+                FinancialEventGroupStart: '2014-09-01T01:30:00.000-06:00',
+                FinancialEventGroupEnd: '2014-09-09T01:30:00.000-06:00'
               }
             }
           },
           ResponseMetadata: {
-            RequestId: "1105b931-6f1c-4480-8e97-f3b46EXAMPLE"
+            RequestId: '1105b931-6f1c-4480-8e97-f3b46EXAMPLE'
           }
         }
       }
@@ -47,32 +48,33 @@ class Finances extends Section {
       return this.request(opt)
     }
   }
+
   listFinancialEvents (opt) {
     opt.Action = 'ListFinancialEvents'
-    if (parent.mockUp) {
+    if (this.parent.mockUp) {
       return {
         ListFinancialEventsResponse: {
-          xmlns: "http://mws.amazonservices.com/Finances/2015-05-01",
+          xmlns: 'http://mws.amazonservices.com/Finances/2015-05-01',
           ListFinancialEventsResult: {
             FinancialEvents: {
               ProductAdsPaymentEventList: [
                 {},
                 {
                   ProductAdsPaymentEvent: {
-                    PostedDate: "2017-01-11T13:17:15.000Z",
-                    transactionType: "Charge",
-                    invoiceId: "TR1W0B4YB-6",
+                    PostedDate: '2017-01-11T13:17:15.000Z',
+                    transactionType: 'Charge',
+                    invoiceId: 'TR1W0B4YB-6',
                     baseValue: {
                       CurrencyAmount: 115.34,
-                      CurrencyCode: "USD"
+                      CurrencyCode: 'USD'
                     },
                     taxValue: {
                       CurrencyAmount: 21.91,
-                      CurrencyCode: "USD"
+                      CurrencyCode: 'USD'
                     },
                     transactionValue: {
                       CurrencyAmount: 137.25,
-                      CurrencyCode: "USD"
+                      CurrencyCode: 'USD'
                     }
                   }
                 }
@@ -83,18 +85,18 @@ class Finances extends Section {
               ServiceProviderCreditEventList: {},
               SellerDealPaymentEventList: {
                 SellerDealPaymentEvent: {
-                  PostedDate: "2016-11-21T16:18:15.000Z",
-                  DealDescription: "test fees",
-                  DealId: "fec11097c1f4379426a7de68bf938b684f677de2",
-                  EventType: "SellerDealComplete",
-                  FeeType: "RunLightningDealFee",
+                  PostedDate: '2016-11-21T16:18:15.000Z',
+                  DealDescription: 'test fees',
+                  DealId: 'fec11097c1f4379426a7de68bf938b684f677de2',
+                  EventType: 'SellerDealComplete',
+                  FeeType: 'RunLightningDealFee',
                   FeeAmount: {
                     CurrencyAmount: 16.38,
-                    CurrencyCode: "USD"
+                    CurrencyCode: 'USD'
                   },
                   TaxAmount: {
                     CurrencyAmount: 3.18,
-                    CurrencyCode: "USD"
+                    CurrencyCode: 'USD'
                   }
                 }
               },
@@ -106,69 +108,69 @@ class Finances extends Section {
                       ItemChargeList: {
                         ChargeComponent: [
                           {
-                            ChargeType: "Principal",
+                            ChargeType: 'Principal',
                             ChargeAmount: {
                               CurrencyAmount: 25.99,
-                              CurrencyCode: "USD"
+                              CurrencyCode: 'USD'
                             }
                           },
                           {
-                            ChargeType: "Tax",
+                            ChargeType: 'Tax',
                             ChargeAmount: {
                               CurrencyAmount: 0.0,
-                              CurrencyCode: "USD"
+                              CurrencyCode: 'USD'
                             }
                           }
                         ],
-                        FeeType: "ShippingChargeback",
+                        FeeType: 'ShippingChargeback',
                         FeeAmount: {
                           CurrencyAmount: 0.0,
-                          CurrencyCode: "USD"
+                          CurrencyCode: 'USD'
                         },
                         FeeComponent: {
-                          FeeType: "VariableClosingFee",
+                          FeeType: 'VariableClosingFee',
                           FeeAmount: {
                             CurrencyAmount: 0.0,
-                            CurrencyCode: "USD"
+                            CurrencyCode: 'USD'
                           }
                         },
-                        OrderItemId: "46432915698730",
+                        OrderItemId: '46432915698730',
                         QuantityShipped: 1,
-                        SellerSKU: "HS223A-C00"
+                        SellerSKU: 'HS223A-C00'
                       }
                     }
                   },
-                  AmazonOrderId: "105-0457358-1245022",
-                  PostedDate: "2017-01-23T01:31:25Z",
-                  MarketplaceName: "Amazon.com",
-                  SellerOrderId: "105-0457358-1245022"
+                  AmazonOrderId: '105-0457358-1245022',
+                  PostedDate: '2017-01-23T01:31:25Z',
+                  MarketplaceName: 'Amazon.com',
+                  SellerOrderId: '105-0457358-1245022'
                 }
               },
               AffordabilityExpenseEventList: {
                 AffordabilityExpenseEvent: {
-                  PostedDate: "2018-02-08T13:17:15.000Z",
-                  TransactionType: "Charge",
-                  AmazonOrderId: "931-2463294-5740665",
-                  MarketplaceId: "A2XZLSVIQ0F4JT",
+                  PostedDate: '2018-02-08T13:17:15.000Z',
+                  TransactionType: 'Charge',
+                  AmazonOrderId: '931-2463294-5740665',
+                  MarketplaceId: 'A2XZLSVIQ0F4JT',
                   BaseExpense: {
                     CurrencyAmount: -100.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TaxTypeIGST: {
                     CurrencyAmount: -18.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TaxTypeSGST: {
                     CurrencyAmount: 0.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TaxTypeCGST: {
                     CurrencyAmount: 0.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TotalExpense: {
                     CurrencyAmount: -118.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   }
                 }
               },
@@ -181,37 +183,37 @@ class Finances extends Section {
               PerformanceBondRefundEventList: {},
               AffordabilityExpenseReversalEventList: {
                 AffordabilityExpenseReversalEvent: {
-                  PostedDate: "2018-02-08T13:17:15.000Z",
-                  TransactionType: "Refund",
-                  AmazonOrderId: "931-2463294-5740665",
-                  MarketplaceId: "A2XZLSVIQ0F4JT",
+                  PostedDate: '2018-02-08T13:17:15.000Z',
+                  TransactionType: 'Refund',
+                  AmazonOrderId: '931-2463294-5740665',
+                  MarketplaceId: 'A2XZLSVIQ0F4JT',
                   BaseExpense: {
                     CurrencyAmount: 100.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TaxTypeIGST: {
                     CurrencyAmount: 18.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TaxTypeSGST: {
                     CurrencyAmount: 0.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TaxTypeCGST: {
                     CurrencyAmount: 0.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   },
                   TotalExpense:
                   {
                     CurrencyAmount: 118.00,
-                    CurrencyCode: "INR"
+                    CurrencyCode: 'INR'
                   }
                 }
               }
             }
           },
           ResponseMetadata: {
-            RequestId: "6a2929e5-5c77-470e-ad71-36f30bfaffcc"
+            RequestId: '6a2929e5-5c77-470e-ad71-36f30bfaffcc'
           }
         }
       }
@@ -219,6 +221,7 @@ class Finances extends Section {
       return this.request(opt)
     }
   }
+
   getServiceStatus (opt) {
     opt.Action = 'GetServiceStatus'
     return this.request(opt)

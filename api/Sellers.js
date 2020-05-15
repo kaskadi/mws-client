@@ -5,15 +5,17 @@ class Sellers extends Section {
     this._section = 'Sellers'
     this.Version = '2011-07-01'
   }
+
   listMarketplaceParticipations (opt) {
     opt.Action = 'ListMarketplaceParticipations'
-    if (parent.mockUp) {
+    if (this.parent.mockUp) {
       // placeholder
       return undefined
     } else {
       return this.request(opt)
     }
   }
+
   getServiceStatus (opt) {
     opt.Action = 'GetServiceStatus'
     return this.request(opt)

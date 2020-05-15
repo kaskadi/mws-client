@@ -23,10 +23,10 @@ describe('MWS.fulfillmentInventory', function () {
 // Helper functions
 
 function testAccessDenied (ret) {
-  assert(ret.hasOwnProperty('ErrorResponse'), 'Response was not an ErrorResponse')
+  assert(ret.ErrorResponse, 'Response was not an ErrorResponse')
   assert.strictEqual(ret.ErrorResponse.Error.Code, 'AccessDenied', 'Error code was not AccessDenied')
 }
 
 function testStatus (ret) {
-  assert(ret.hasOwnProperty('GetServiceStatusResponse'), 'No response or error received from the service')
+  assert(ret.GetServiceStatusResponse, 'No response or error received from the service')
 }
