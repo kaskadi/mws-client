@@ -1,4 +1,4 @@
-name: coverage
+name: build
 on:
   push:
     branches:
