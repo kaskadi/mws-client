@@ -25,7 +25,7 @@ function processInputs (section, version, endpoints) {
 
 function getMockupData (endpoints) {
   return `module.exports = {
-${endpoints.split(' ').map((endpoint, i, arr) => i !== arr.length -1 ? `  ${endpoint}: {},\n` : `  ${endpoint}: {}`).join('')}
+${endpoints.split(' ').map((endpoint, i, arr) => i !== arr.length - 1 ? `  ${endpoint}: {},\n` : `  ${endpoint}: {}`).join('')}
 }\n`
 }
 
