@@ -1,6 +1,5 @@
 /* eslint no-undef: "off" */
-const dotenv = require('dotenv')
-dotenv.config()
+require('./utils/set-env.js')
 const MWS = require('../')({ AWSAccessKeyId: process.env.AWSACCESSKEY, SellerId: process.env.SELLERID, MWSAuthToken: process.env.MWSAUTHTOKEN })
 
 var assert = require('assert')
