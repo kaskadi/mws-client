@@ -1,12 +1,12 @@
 /* eslint-disable */
-const dotenv = require('dotenv')
-dotenv.config()
+require('./utils/set-env.js')
+const version = JSON.parse(require('../package.json')).version
 
 var assert = require('assert')
 describe('MWS API', function () {
   it('should have a default user agent string', function () {
     const MWS = require('../')({ AWSAccessKeyId: 'Hello', SellerId: 'Hey', MWSAuthToken: 'Token' })
-    assert.strictEqual(MWS.userAgent, 'kaskadi-mws-sdk/0.0.1 (Language=node.js)')
+    assert.strictEqual(MWS.userAgent, `kaskadi-mws-sdk/${version} (Language=node.js)`)
   })
   it('should be able to change the user agent string', function () {
     const MWS = require('../')({ AWSAccessKeyId: 'Hello', SellerId: 'Hey', MWSAuthToken: 'Token', userAgent: 'test' })

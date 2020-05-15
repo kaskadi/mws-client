@@ -1,0 +1,24 @@
+name: build
+on:
+  push:
+    branches:
+      - 'master'
+      - 'dev'
+    paths:
+      - 'index.js'
+      - 'api/**'
+      - 'test/**'
+      - 'package.json'
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: npm i
+    - name: Test
+      run: npm run test
+      env:
+        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+        SELLER_ID: ${{ secrets.SELLER_ID }}
+        MWS_AUTH_TOKEN: ${{ secrets.MWS_AUTH_TOKEN }}

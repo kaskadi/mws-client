@@ -2,8 +2,7 @@ const crypto = require('crypto')
 const querystring = require('querystring')
 const fetch = require('node-fetch')
 const parser = require('xml2json')
-
-// const USER_AGENT = 'kaskadi-mws-sdk/0.0.1 (Language=node.js)'
+const version = JSON.parse(require('./package.json')).version
 
 const MARKETPLACE = {
   BR: { name: 'Brazil', sc: 'BR', endpoint: 'mws.amazonservices.com', id: 'A2Q3Y263D00KWC' },
@@ -23,11 +22,11 @@ const MARKETPLACE = {
   CN: { name: 'China', sc: 'CN', endpoint: 'mws.amazonservices.com.cn', id: 'AAHKV2X7AFYLW' }
 }
 
-// these ara all defaults. the rest must be passed with the constructor
+// these are all defaults. the rest must be passed with the constructor
 const MWS_DEFAULT_OPTIONS = {
   SignatureVersion: '2', // we might switch to 4 later
   SignatureMethod: 'HmacSHA256',
-  userAgent: 'kaskadi-mws-sdk/0.0.1 (Language=node.js)'
+  userAgent: `kaskadi-mws-sdk/${version} (Language=node.js)`
 }
 
 class MWS {

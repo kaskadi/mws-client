@@ -1,7 +1,6 @@
 /* eslint no-undef: "off" */
-const dotenv = require('dotenv')
-dotenv.config()
-const MWS = require('../')({ AWSAccessKeyId: process.env.AWSACCESSKEY, SellerId: process.env.SELLERID, MWSAuthToken: process.env.MWSAUTHTOKEN })
+require('./utils/set-env.js')
+const MWS = require('../')({ AWSAccessKeyId: process.env.AWS_ACCESS_KEY, SellerId: process.env.SELLER_ID, MWSAuthToken: process.env.MWS_AUTH_TOKEN })
 
 var assert = require('assert')
 describe('MWS.fulfillmentInventory', function () {
