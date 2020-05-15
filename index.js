@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const querystring = require('querystring')
 const fetch = require('node-fetch')
 const parser = require('xml2json')
-const version = JSON.parse(require('./package.json')).version
+const version = require('./package.json').version
 
 const MARKETPLACE = {
   BR: { name: 'Brazil', sc: 'BR', endpoint: 'mws.amazonservices.com', id: 'A2Q3Y263D00KWC' },
@@ -38,19 +38,19 @@ class MWS {
     this.MWSAuthToken = options.MWSAuthToken
     this.SellerId = options.SellerId
     this.userAgent = options.userAgent
-    this.easyShip = require('./api/EasyShip.js')(this)
-    this.feeds = require('./api/Feeds.js')(this)
-    this.finances = require('./api/Finances.js')(this)
-    this.fulfillmentInboundShipment = require('./api/FulfillmentInboundShipment.js')(this)
-    this.fulfillmentInventory = require('./api/FulfillmentInventory.js')(this)
-    this.fulfillmentOutboundShipment = require('./api/FulfillmentOutboundShipment.js')(this)
-    this.merchantFulfillment = require('./api/MerchantFulfillment.js')(this)
-    this.orders = require('./api/Orders.js')(this)
-    this.products = require('./api/Products.js')(this)
-    this.recommendations = require('./api/Recommendations.js')(this)
-    this.reports = require('./api/Reports.js')(this)
-    this.sellers = require('./api/Sellers.js')(this)
-    this.subscriptions = require('./api/Subscriptions.js')(this)
+    this.easyShip = require('./api/EasyShip/EasyShip.js')(this)
+    this.feeds = require('./api/Feeds/Feeds.js')(this)
+    this.finances = require('./api/Finances/Finances.js')(this)
+    this.fulfillmentInboundShipment = require('./api/FulfillmentInboundShipment/FulfillmentInboundShipment.js')(this)
+    this.fulfillmentInventory = require('./api/FulfillmentInventory/FulfillmentInventory.js')(this)
+    this.fulfillmentOutboundShipment = require('./api/FulfillmentOutboundShipment/FulfillmentOutboundShipment.js')(this)
+    this.merchantFulfillment = require('./api/MerchantFulfillment/MerchantFulfillment.js')(this)
+    this.orders = require('./api/Orders/Orders.js')(this)
+    this.products = require('./api/Products/Products.js')(this)
+    this.recommendations = require('./api/Recommendations/Recommendations.js')(this)
+    this.reports = require('./api/Reports/Reports.js')(this)
+    this.sellers = require('./api/Sellers/Sellers.js')(this)
+    this.subscriptions = require('./api/Subscriptions/Subscriptions.js')(this)
   }
 
   request (opt) {
@@ -114,7 +114,6 @@ ${querystring.stringify(rqs)}`
 // helper functions
 
 async function makeRequest (url, method, body, ua) {
-  console.log(url)
   var res = await fetch(url, {
     method: method,
     headers: { 'User-Agent': ua }
