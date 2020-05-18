@@ -1,6 +1,6 @@
 /* eslint-disable */
 require('./utils/set-env.js')
-const version = JSON.parse(require('../package.json')).version
+const version = require('../package.json').version
 
 var assert = require('assert')
 describe('MWS API', function () {

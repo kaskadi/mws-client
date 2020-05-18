@@ -4,7 +4,8 @@
   "description": "an api wrapper for Amazon Marketplace Webservice API",
   "main": "index.js",
   "scripts": {
-    "test": "standard --fix && nyc --reporter=lcov mocha",
+    "test": "nyc --reporter=lcov mocha",
+    "lint": "standard --fix",
     "coverage": "nyc --reporter=html mocha && xdg-open ./coverage/index.html"
   },
   "author": "",
