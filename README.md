@@ -2,7 +2,7 @@
 
 **Client initialization:**
 
-```const MWS = require('mws-client')({ AWSAccessKeyId: 'YOUR_AWS_ACCESS_KEY', SellerId: 'YOUR_SELLER_ID', MWSAuthToken: 'YOUR_MWS_AUTH_TOKEN' })```
+`const MWS = require('mws-client')({ AWSAccessKeyId: 'YOUR_AWS_ACCESS_KEY', SellerId: 'YOUR_SELLER_ID', MWSAuthToken: 'YOUR_MWS_AUTH_TOKEN' })`
 
 - `options` `<Object>`
   - `AWSAccessKeyId` `<String>`: your AWS access key ID
@@ -18,8 +18,8 @@ Each API section is available as method of your `MWS` client. Each endpoint is t
 
 _Examples:_
 
-- ```const list = await MWS.fulfillmentInventory.listInventorySupply({ QueryStartDateTime: new Date(d).toISOString(), ResponseGroup: 'Basic', _marketplace: 'DE' })```
-- ```const status = await MWS.fulfillmentInventory.getServiceStatus({ _marketplace: 'DE' })```
+- `const list = await MWS.fulfillmentInventory.listInventorySupply({ QueryStartDateTime: new Date(d).toISOString(), ResponseGroup: 'Basic', _marketplace: 'DE' })`
+- `const status = await MWS.fulfillmentInventory.getServiceStatus({ _marketplace: 'DE' })`
 
 **Available sections:**
 
