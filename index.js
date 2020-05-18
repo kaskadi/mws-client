@@ -4,6 +4,11 @@ const fetch = require('node-fetch')
 const parser = require('xml2json')
 const fs = require('fs')
 
+const nodeVersion = process.version
+if (Number(nodeVersion.split('.')[0].slice(1)) < 12) {
+  throw Error(`Your current node version is ${nodeVersion}. This client requires you to run at least node 12 to work properly.`)
+}
+
 class MWS {
   constructor (opt) {
     // these are all defaults. the rest must be passed with the constructor
