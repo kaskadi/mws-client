@@ -2,6 +2,7 @@ const crypto = require('crypto')
 const querystring = require('querystring')
 const fetch = require('node-fetch')
 const parser = require('xml2json')
+const fs = require('fs')
 const version = require('./package.json').version
 
 const MARKETPLACE = {
@@ -38,19 +39,9 @@ class MWS {
     this.MWSAuthToken = options.MWSAuthToken
     this.SellerId = options.SellerId
     this.userAgent = options.userAgent
-    this.easyShip = require('./api/EasyShip/EasyShip.js')(this)
-    this.feeds = require('./api/Feeds/Feeds.js')(this)
-    this.finances = require('./api/Finances/Finances.js')(this)
-    this.fulfillmentInboundShipment = require('./api/FulfillmentInboundShipment/FulfillmentInboundShipment.js')(this)
-    this.fulfillmentInventory = require('./api/FulfillmentInventory/FulfillmentInventory.js')(this)
-    this.fulfillmentOutboundShipment = require('./api/FulfillmentOutboundShipment/FulfillmentOutboundShipment.js')(this)
-    this.merchantFulfillment = require('./api/MerchantFulfillment/MerchantFulfillment.js')(this)
-    this.orders = require('./api/Orders/Orders.js')(this)
-    this.products = require('./api/Products/Products.js')(this)
-    this.recommendations = require('./api/Recommendations/Recommendations.js')(this)
-    this.reports = require('./api/Reports/Reports.js')(this)
-    this.sellers = require('./api/Sellers/Sellers.js')(this)
-    this.subscriptions = require('./api/Subscriptions/Subscriptions.js')(this)
+    fs.readdirSync('api', { withFileTypes: true }).filter(dirent => dirent.isDirectory()).map(dirent => dirent.name).forEach(section => {
+      this[section.charAt(0).toLowerCase() + section.slice(1)] = require(`./api/${section}/${section}.js`)(this)
+    })
   }
 
   request (opt) {
