@@ -5,11 +5,11 @@ const MWS = require('../')({ AWSAccessKeyId: process.env.AWS_ACCESS_KEY, SellerI
 var assert = require('assert')
 describe('MWS.fulfillmentInventory', function () {
   describe('MWS.fulfillmentInventory.listInventorySupply()', function () {
-    it('should return an AccessDenied error', async function () {
+    it('should return inventory data', async function () {
       var d = new Date()
       d = d - 60 * 60 * 24 * 1000 * 365
       const ret = await MWS.fulfillmentInventory.listInventorySupply({ QueryStartDateTime: new Date(d).toISOString(), ResponseGroup: 'Basic', _marketplace: 'DE' })
-      testAccessDenied(ret)
+      testListInventorySupply(ret)
     })
   })
   describe('MWS.fulfillmentInventory.getServiceStatus()', function () {
@@ -22,9 +22,9 @@ describe('MWS.fulfillmentInventory', function () {
 
 // Helper functions
 
-function testAccessDenied (ret) {
-  assert(ret.ErrorResponse, 'Response was not an ErrorResponse')
-  assert.strictEqual(ret.ErrorResponse.Error.Code, 'AccessDenied', 'Error code was not AccessDenied')
+function testListInventorySupply (ret) {
+  assert(ret.ListInventorySupplyResponse, 'Response was not an ListInventorySupplyResponse')
+  assert(ret.ListInventorySupplyResponse.ListInventorySupplyResult.InventorySupplyList.member, 'Response contains no data')
 }
 
 function testStatus (ret) {
