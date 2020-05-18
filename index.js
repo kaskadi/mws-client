@@ -79,20 +79,11 @@ ${querystring.stringify(rqs)}`
   }
 
   _filterObject (obj) {
-    const newObj = {}
-    Object.entries(obj).forEach(function (entry) {
-      if (entry[0].charAt(0) !== '_') {
-        newObj[entry[0]] = entry[1]
-      }
-    })
-    return newObj
+    return Object.fromEntries(Object.entries(obj).filter(entry => entry[0].charAt(0) !== '_'))
   }
 
   _sortObject (obj) {
-    const newObj = {}
-    const arr = Object.keys(obj).sort()
-    arr.forEach(key => { newObj[key] = obj[key] })
-    return newObj
+    return Object.fromEntries(Object.keys(obj).sort().map(key => [key, obj[key]]))
   }
 
   _sign (str, key) {
