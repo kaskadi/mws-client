@@ -10,7 +10,7 @@
   - `SellerId` `<String>`: your seller ID
   - `SignatureVersion` `<String>` [optional]: your desired signature version. _Default:_ `'2'`
   - `SignatureMethod` `<String>` [optional]: your desired signature method. _Default:_ `'HmacSHA256'`
-  - `userAgent` `<String>` [optional]: your desired user agent. _Default:_ `'kaskadi-mws-sdk/VERSION (Language=node.js)'`
+  - `userAgent` `<String>` [optional]: your desired user agent. _Default:_ `'kaskadi-mws-client/VERSION (Language=node.js)'`
 - returns `<Class>`, instance of MWS client
 
 **Client usage:**

@@ -6,7 +6,7 @@ var assert = require('assert')
 describe('MWS API', function () {
   it('should have a default user agent string', function () {
     const MWS = require('../')({ AWSAccessKeyId: 'Hello', SellerId: 'Hey', MWSAuthToken: 'Token' })
-    assert.strictEqual(MWS.userAgent, `kaskadi-mws-sdk/${version} (Language=node.js)`)
+    assert.strictEqual(MWS.userAgent, `kaskadi-mws-client/${version} (Language=node.js)`)
   })
   it('should be able to change the user agent string', function () {
     const MWS = require('../')({ AWSAccessKeyId: 'Hello', SellerId: 'Hey', MWSAuthToken: 'Token', userAgent: 'test' })

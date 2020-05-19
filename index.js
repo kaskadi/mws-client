@@ -15,7 +15,7 @@ class MWS {
     const MWS_DEFAULT_OPTIONS = {
       SignatureVersion: '2', // we might switch to 4 later
       SignatureMethod: 'HmacSHA256',
-      userAgent: `kaskadi-mws-sdk/${require('./package.json').version} (Language=node.js)`
+      userAgent: `kaskadi-mws-client/${require('./package.json').version} (Language=node.js)`
     }
     const options = { ...MWS_DEFAULT_OPTIONS, ...opt }
     this.SignatureVersion = options.SignatureVersion
