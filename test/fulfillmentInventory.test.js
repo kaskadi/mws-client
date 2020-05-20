@@ -10,7 +10,6 @@ describe('MWS.fulfillmentInventory', function () {
       var d = new Date()
       d = d - 60 * 60 * 24 * 1000 * 365
       const ret = await MWS.fulfillmentInventory.listInventorySupply({ QueryStartDateTime: new Date(d).toISOString(), ResponseGroup: 'Basic', _marketplace: 'DE' })
-      console.log(ret)
       testListInventorySupply(ret)
     })
   })
