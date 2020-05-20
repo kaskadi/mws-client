@@ -34,6 +34,42 @@ module.exports = {
       }
     }
   },
+  listInventorySupplyByNextToken: {
+    ListInventorySupplyByNextTokenResponse: {
+      xmlns: 'http://mws.amazonaws.com/FulfillmentInventory/2010-10-01/',
+      ListInventorySupplyByNextTokenResult: {
+        NextToken: '2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=',
+        InventorySupplyList: {
+          member: [
+            {
+              SellerSKU: 'SampleSKU5',
+              ASIN: 'B00008UI0R',
+              TotalSupplyQuantity: '0',
+              FNSKU: 'B00008UI0R',
+              Condition: null,
+              SupplyDetail: null,
+              InStockSupplyQuantity: '0'
+            },
+            {
+              SellerSKU: 'SampleSKU6',
+              ASIN: 'B00000K3CQ',
+              TotalSupplyQuantity: '5259',
+              FNSKU: 'X0000000FM',
+              Condition: 'NewItem',
+              SupplyDetail: null,
+              InStockSupplyQuantity: '5259',
+              EarliestAvailability: {
+                TimepointType: 'Immediately'
+              }
+            }
+          ]
+        }
+      },
+      ResponseMetadata: {
+        RequestId: 'b3a020ac-8e5e-11df-9acb-230ae7a8b736'
+      }
+    }
+  },
   getServiceStatus: {
     GetServiceStatusResponse: {
       xmlns: 'http://mws.amazonaws.com/FulfillmentInventory/2010-10-01/',

@@ -4,7 +4,7 @@ class FulfillmentInventory extends Section {
     super(parent)
     this._section = 'FulfillmentInventory'
     this.Version = '2010-10-01'
-    require('../attach-methods.js').bind(this)(['listInventorySupply', 'getServiceStatus'])
+    require('../attach-methods.js').bind(this)(['listInventorySupply', 'listInventorySupplyByNextToken', 'getServiceStatus'])
   }
 }
 

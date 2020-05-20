@@ -41,7 +41,7 @@ class MWS {
         SignatureVersion: this.SignatureVersion,
         SignatureMethod: this.SignatureMethod,
         SellerId: this.SellerId,
-        MarkedplaceId: MarketplaceId,
+        MarketplaceId,
         _httpMethod: 'GET'
       },
       ...opt
