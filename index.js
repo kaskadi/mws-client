@@ -3,6 +3,7 @@ const querystring = require('querystring')
 const fetch = require('node-fetch')
 const parser = require('xml2json')
 const fs = require('fs')
+const path = require('path')
 
 const nodeVersion = process.version
 if (Number(nodeVersion.split('.')[0].slice(1)) < 12) {
@@ -24,7 +25,7 @@ class MWS {
     this.MWSAuthToken = options.MWSAuthToken
     this.SellerId = options.SellerId
     this.userAgent = options.userAgent
-    fs.readdirSync('api', { withFileTypes: true }).filter(dirent => dirent.isDirectory()).map(dirent => dirent.name).forEach(section => {
+    fs.readdirSync(path.join(__dirname, 'api'), { withFileTypes: true }).filter(dirent => dirent.isDirectory()).map(dirent => dirent.name).forEach(section => {
       this[section.charAt(0).toLowerCase() + section.slice(1)] = require(`./api/${section}/${section}.js`)(this)
     })
   }
