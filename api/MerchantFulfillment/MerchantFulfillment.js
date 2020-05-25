@@ -4,7 +4,7 @@ class MerchantFulfillment extends Section {
     super(parent)
     this._section = 'MerchantFulfillment'
     this.Version = '2015-06-01'
-    require('../attach-methods.js').bind(this)(['getEligibleShippingServices', 'createShipment', 'getShipment', 'cancelShipment', 'getServiceStatus'])
+    require('../attach-methods.js').bind(this)(['getEligibleShippingServices', 'getAdditionalSellerInputs', 'createShipment', 'getShipment', 'cancelShipment', 'getServiceStatus'])
   }
 }
 
