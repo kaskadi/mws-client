@@ -128,6 +128,193 @@ module.exports = {
       }
     }
   },
+  getAdditionalSellerInputs: {
+    GetAdditionalSellerInputsResult: {
+      ShipmentLevelFields: {
+        member: [
+          {
+            SellerInputDefinition: {
+              IsRequired: true,
+              RestrictedSetValues: {
+                member: [
+                  'Abandon',
+                  'Return'
+                ]
+              },
+              DataType: 'String',
+              InputTarget: 'SHIPMENT_LEVEL',
+              StoredValue: {
+                ValueAsString: 'ABANDON',
+                DataType: 'STRING',
+                ValueAsBoolean: false,
+                ValueAsInteger: '0'
+              },
+              InputDisplayText: 'Non-Deliverable Instructions',
+              Constraints: null
+            },
+            AdditionalInputFieldName: 'NON_DELIVERABLE_INSTRUCTIONS'
+          },
+          {
+            SellerInputDefinition: {
+              IsRequired: true,
+              RestrictedSetValues: null,
+              DataType: 'Address',
+              InputTarget: 'SHIPMENT_LEVEL',
+              InputDisplayText: 'Ship From Address(Chinese)',
+              Constraints: {
+                member: {
+                  ValidationRegEx: 'putjust5digitRegex',
+                  ValidationString: 'Please enter Ship From Address in Chinese'
+                }
+              }
+            },
+            AdditionalInputFieldName: 'SENDER_ADDRESS_TRANSLATED'
+          }
+        ]
+      },
+      ItemLevelFieldsList: {
+        member: {
+          Asin: 'B004U9TL66',
+          AdditionalInputs: {
+            member: [
+              {
+                SellerInputDefinition: {
+                  IsRequired: true,
+                  RestrictedSetValues: null,
+                  DataType: 'Weight',
+                  InputTarget: 'ITEM_LEVEL',
+                  StoredValue: {
+                    ValueAsWeight: {
+                      Value: '600',
+                      Unit: 'G'
+                    },
+                    DataType: 'WEIGHT',
+                    ValueAsBoolean: false,
+                    ValueAsInteger: '0'
+                  },
+                  InputDisplayText: 'Item weight',
+                  Constraints: {
+                    member: {
+                      ValidationRegEx: '^[0-9]{1,3}(.[0-9]{1,2})?$',
+                      ValidationString: 'Please enter item weight (max 6 digits)'
+                    }
+                  }
+                },
+                AdditionalInputFieldName: 'ITEM_WEIGHT'
+              },
+              {
+                SellerInputDefinition: {
+                  IsRequired: true,
+                  RestrictedSetValues: null,
+                  DataType: 'String',
+                  InputTarget: 'ITEM_LEVEL',
+                  StoredValue: {
+                    ValueAsString: 'CN',
+                    DataType: 'STRING',
+                    ValueAsBoolean: false,
+                    ValueAsInteger: '0'
+                  },
+                  InputDisplayText: 'Country of Origin',
+                  Constraints: {
+                    member: {
+                      ValidationRegEx: '^[a-zA-Z]{2}$',
+                      ValidationString: 'Please enter country code of the country of manufacture (e.g. CN)'
+                    }
+                  }
+                },
+                AdditionalInputFieldName: 'COUNTRY_OF_ORIGIN'
+              },
+              {
+                SellerInputDefinition: {
+                  IsRequired: true,
+                  RestrictedSetValues: null,
+                  DataType: 'String',
+                  InputTarget: 'ITEM_LEVEL',
+                  StoredValue: {
+                    ValueAsString: 'è¡£æœ\ufffd',
+                    DataType: 'STRING',
+                    ValueAsBoolean: false,
+                    ValueAsInteger: '0'
+                  },
+                  InputDisplayText: 'Item Description(Chinese)',
+                  Constraints: {
+                    member: {
+                      ValidationRegEx: '^[^a-zA-Z]{1,10}$',
+                      ValidationString: 'Please enter item description in Chinese up to 10 characters'
+                    }
+                  }
+                },
+                AdditionalInputFieldName: 'ITEM_DESCRIPTION_TRANSLATED'
+              },
+              {
+                SellerInputDefinition: {
+                  IsRequired: true,
+                  RestrictedSetValues: null,
+                  DataType: 'String',
+                  InputTarget: 'ITEM_LEVEL',
+                  StoredValue: {
+                    ValueAsString: '200',
+                    DataType: 'CURRENCY',
+                    ValueAsBoolean: false,
+                    ValueAsInteger: '0'
+                  },
+                  InputDisplayText: 'Item Value(USD)',
+                  Constraints: {
+                    member: {
+                      ValidationRegEx: '^[0-9]{1,3}(.[0-9]{1,2})?$',
+                      ValidationString: 'Please enter item value in USD (max 6 digits)'
+                    }
+                  }
+                },
+                AdditionalInputFieldName: 'ITEM_VALUE'
+              },
+              {
+                SellerInputDefinition: {
+                  IsRequired: false,
+                  RestrictedSetValues: null,
+                  DataType: 'String',
+                  InputTarget: 'ITEM_LEVEL',
+                  InputDisplayText: 'HS Code',
+                  Constraints: {
+                    member: {
+                      ValidationRegEx: '^[0-9a-zA-Z -]{1,10}?$',
+                      ValidationString: 'Please enter HS Code containing letters and numbers only up to 10 characters'
+                    }
+                  }
+                },
+                AdditionalInputFieldName: 'HS_CODE'
+              },
+              {
+                SellerInputDefinition: {
+                  IsRequired: true,
+                  RestrictedSetValues: null,
+                  DataType: 'String',
+                  InputTarget: 'ITEM_LEVEL',
+                  StoredValue: {
+                    ValueAsString: 'Diapers',
+                    DataType: 'STRING',
+                    ValueAsBoolean: false,
+                    ValueAsInteger: '0'
+                  },
+                  InputDisplayText: 'Item Description',
+                  Constraints: {
+                    member: {
+                      ValidationRegEx: '^[a-zA-Z0-9-._& ]{3,25}$',
+                      ValidationString: 'Please enter item description using alphanumeric characters (max 25 characters)'
+                    }
+                  }
+                },
+                AdditionalInputFieldName: 'ITEM_DESCRIPTION'
+              }
+            ]
+          }
+        }
+      }
+    },
+    ResponseMetadata: {
+      RequestId: 'c16c3c89-6dcd-11e9-b318-db190c5bb6ad'
+    }
+  },
   createShipment: {
     CreateShipmentResponse: {
       xmlns: 'https://mws.amazonservices.com/MerchantFulfillment/2015-06-01',

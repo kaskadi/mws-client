@@ -24,6 +24,31 @@ module.exports = {
       RequestId: 'efeab958-74e2-45d4-9018-2323084413b5'
     }
   },
+  listMarketplaceParticipationsByNextToken: {
+    ListMarketplaceParticipationsByNextTokenResult: {
+      NextToken: 'MRgZW55IGNhcm5hbCBwbGVhc3VyZS6=',
+      ListParticipations: {
+        Participation: {
+          MarketplaceId: 'ATVPDKIKX0DER',
+          SellerId: 'A135KKEKWF1JAI6',
+          HasSellerSuspendedListings: 'No'
+        }
+      },
+      ListMarketplaces: {
+        Marketplace: {
+          MarketplaceId: 'ATVPDKIKX0DER',
+          Name: 'Amazon.com',
+          DefaultCountryCode: 'US',
+          DefaultCurrencyCode: 'USD',
+          DefaultLanguageCode: 'en_US',
+          DomainName: 'www.amazon.com'
+        }
+      }
+    },
+    ResponseMetadata: {
+      RequestId: 'efeab958-74e2-45d4-9018-2323084413b5'
+    }
+  },
   getServiceStatus: {
     GetServiceStatusResponse: {
       xmlns: 'https://mws.amazonservices.com/Sellers/2011-07-01',

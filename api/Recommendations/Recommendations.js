@@ -4,7 +4,7 @@ class Recommendations extends Section {
     super(parent)
     this._section = 'Recommendations'
     this.Version = '2013-04-01'
-    require('../attach-methods.js').bind(this)(['getLastUpdatedTimeForRecommendations', 'listRecommendations', 'getServiceStatus'])
+    require('../attach-methods.js').bind(this)(['getLastUpdatedTimeForRecommendations', 'listRecommendations', 'listRecommendationsByNextToken', 'getServiceStatus'])
   }
 }
 

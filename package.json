@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nyc --reporter=lcov mocha",
     "lint": "standard --fix",
-    "coverage": "nyc --reporter=html mocha && xdg-open ./coverage/index.html"
+    "coverage": "nyc --reporter=html mocha && xdg-open ./coverage/index.html",
+    "add-section": "node tools/section-generator.js"
   },
   "author": "",
   "license": "MIT",

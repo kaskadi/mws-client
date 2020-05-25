@@ -4,7 +4,7 @@ class Reports extends Section {
     super(parent)
     this._section = 'Reports'
     this.Version = '2009-01-01'
-    require('../attach-methods.js').bind(this)(['requestReport', 'getReportRequestList', 'getReportRequestCount', 'cancelReportRequests', 'getReportList', 'getReportCount', 'getReport', 'manageReportSchedule', 'getReportScheduleList', 'getReportScheduleCount', 'updateReportAcknowledgements'])
+    require('../attach-methods.js').bind(this)(['requestReport', 'getReportRequestList', 'getReportRequestListByNextToken', 'getReportRequestCount', 'cancelReportRequests', 'getReportList', 'getReportListByNextToken', 'getReportCount', 'getReport', 'manageReportSchedule', 'getReportScheduleList', 'getReportScheduleCount', 'updateReportAcknowledgements'])
   }
 }
 

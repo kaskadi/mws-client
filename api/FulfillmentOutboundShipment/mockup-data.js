@@ -548,6 +548,58 @@ module.exports = {
       }
     }
   },
+  listAllFulfillmentOrdersByNextToken: {
+    NextToken: 'H4sIAAAAAAAAAC2M0QqCQBBFf2WZ982ZXVeHxRUifMsEs96jVhIq0fX/abVguMw5cG8xidFBGJanXHxY5Dg//Px7ibI0N0YTMacg7g4UYha1VNyRschWGxkTEcTggJBAfByYiG8H/e0VPAi/1ggl5pJ0R8oqbQ3tkDmqrRq2YV6H0XSYRRnvP1wWfdlWdXPdH4ukX+nQnM6Xumo3TKbyC+hpQInCAAAA',
+    ListAllFulfillmentOrdersByNextTokenResult: {
+      FulfillmentOrders: {
+        member: [
+          {
+            ShippingSpeedCategory: 'Standard',
+            StatusUpdatedDateTime: '2011-01-02T07:49:35Z',
+            SellerFulfillmentOrderId: 'SampleOrderId',
+            DestinationAddress: {
+              PostalCode: '98101',
+              PhoneNumber: '123-456-7890',
+              Name: 'Fred Jones',
+              CountryCode: 'US',
+              Line1: 'Amazon.com',
+              StateOrProvinceCode: 'WA',
+              City: 'Seattle'
+            },
+            DisplayableOrderDateTime: '2011-01-08T08:00:00Z',
+            FulfillmentPolicy: 'FillAllAvailable',
+            ReceivedDateTime: '2011-01-08T17:23:20Z',
+            DisplayableOrderId: 'MinimalOrder',
+            DisplayableOrderComment: 'Sample order comment',
+            FulfillmentOrderStatus: 'PROCESSING'
+          },
+          {
+            ShippingSpeedCategory: 'Standard',
+            StatusUpdatedDateTime: '2011-02-20T19:00:07Z',
+            SellerFulfillmentOrderId: 'SampleOrderId',
+            DestinationAddress: {
+              PostalCode: '98101',
+              PhoneNumber: '098-765-4321',
+              Name: 'Mary Johnson',
+              CountryCode: 'US',
+              Line1: '456 7th Ave',
+              StateOrProvinceCode: 'WA',
+              City: 'Seattle'
+            },
+            DisplayableOrderDateTime: '2011-02-25T07:00:00Z',
+            FulfillmentPolicy: 'FillAllAvailable',
+            ReceivedDateTime: '2011-02-25T18:47:49Z',
+            DisplayableOrderId: 'SampleOrderID',
+            DisplayableOrderComment: 'Sample order comment.',
+            FulfillmentOrderStatus: 'PROCESSING'
+          }
+        ]
+      }
+    },
+    ResponseMetadata: {
+      RequestId: 'f14964dd-8e79-11df-929f-87c80302f8f6'
+    }
+  },
   getPackageTrackingDetails: {
     GetPackageTrackingDetailsResponse: {
       xmlns: 'http://mws.amazonaws.com/FulfillmentOutboundShipment/2010-10-01/',

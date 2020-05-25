@@ -36,6 +36,24 @@ module.exports = {
       RequestId: '732480cb-84a8-4c15-9084-a46bd9a0889b'
     }
   },
+  getReportRequestListByNextToken: {
+    GetReportRequestListByNextTokenResult: {
+      NextToken: 'none',
+      HasNext: false,
+      ReportRequestInfo: {
+        ReportRequestId: '2291326454',
+        ReportType: '_GET_MERCHANT_LISTINGS_DATA_',
+        StartDate: '2009-01-21T02:10:39+00:00',
+        EndDate: '2009-02-13T02:10:39+00:00',
+        Scheduled: false,
+        SubmittedDate: '2009-02-20T02:10:39+00:00',
+        ReportProcessingStatus: '_SUBMITTED_'
+      }
+    },
+    ResponseMetadata: {
+      RequestId: '732480cb-84a8-4c15-9084-a46bd9a0889b'
+    }
+  },
   getReportRequestCount: {
     GetReportRequestCountResult: {
       Count: '1276'
@@ -65,6 +83,22 @@ module.exports = {
     GetReportListResult: {
       NextToken: '2YgYW55IPQhvu5hbCBwbGVhc3VyZS4=',
       HasNext: true,
+      ReportInfo: {
+        ReportId: '898899473',
+        ReportType: '_GET_MERCHANT_LISTINGS_DATA_',
+        ReportRequestId: '2278662938',
+        AvailableDate: '2009-02-10T09:22:33+00:00',
+        Acknowledged: false
+      }
+    },
+    ResponseMetadata: {
+      RequestId: 'fbf677c1-dcee-4110-bc88-2ba3702e331b'
+    }
+  },
+  getReportListByNextToken: {
+    GetReportListByNextTokenResult: {
+      NextToken: 'none',
+      HasNext: false,
       ReportInfo: {
         ReportId: '898899473',
         ReportType: '_GET_MERCHANT_LISTINGS_DATA_',

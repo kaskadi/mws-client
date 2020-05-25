@@ -21,6 +21,14 @@ module.exports = {
       }
     }
   },
+  listRecommendationsByNextToken: {
+    ListRecommendationsByNextTokenResult: {
+      NextToken: 'AAAAAAAAEXAMPLE+13sB+=='
+    },
+    ResponseMetadata: {
+      RequestId: 'b106b175-85ca-11e2-8826-c31d9EXAMPLE'
+    }
+  },
   getServiceStatus: {
     GetServiceStatusResponse: {
       xmlns: 'https://mws.amazonservices.com/Recommendations/2013-04-01',

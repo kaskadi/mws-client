@@ -4,7 +4,7 @@ class Sellers extends Section {
     super(parent)
     this._section = 'Sellers'
     this.Version = '2011-07-01'
-    require('../attach-methods.js').bind(this)(['listMarketplaceParticipations', 'getServiceStatus'])
+    require('../attach-methods.js').bind(this)(['listMarketplaceParticipations', 'listMarketplaceParticipationsByNextToken', 'getServiceStatus'])
   }
 }
 

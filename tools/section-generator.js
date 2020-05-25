@@ -17,15 +17,21 @@ rl.question('Enter the section name: ', function (section) {
 function processInputs (section, version, endpoints) {
   const fs = require('fs')
   const path = require('path')
-  const dirPath = path.join('..', 'api', section)
+  let pathParts = []
+  if (path.basename === 'tools') {
+    pathParts.push('..')
+  }
+  pathParts = [...pathParts, ...['api', section]]
+  const dirPath = path.join(...pathParts)
   fs.mkdirSync(dirPath)
+  endpoints = endpoints.split(' ').map(endpoint => endpoint.charAt(0).toLowerCase() + endpoint.slice(1))
   fs.writeFileSync(path.join(dirPath, 'mockup-data.js'), getMockupData(endpoints), 'utf8')
   fs.writeFileSync(path.join(dirPath, `${section}.js`), getHandler(section, version, endpoints), 'utf8')
 }
 
 function getMockupData (endpoints) {
   return `module.exports = {
-${endpoints.split(' ').map((endpoint, i, arr) => i !== arr.length - 1 ? `  ${endpoint}: {},\n` : `  ${endpoint}: {}`).join('')}
+${endpoints.map((endpoint, i, arr) => i !== arr.length - 1 ? `  ${endpoint}: {},\n` : `  ${endpoint}: {}`).join('')}
 }\n`
 }
 
@@ -36,7 +42,7 @@ class ${section} extends Section {
     super(parent)
     this._section = '${section}'
     this.Version = '${version}'
-    require('../attach-methods.js').bind(this)([${endpoints.split(' ').map(endpoint => `'${endpoint}'`).join(', ')}])
+    require('../attach-methods.js').bind(this)([${endpoints.map(endpoint => `'${endpoint}'`).join(', ')}])
   }
 }
 
