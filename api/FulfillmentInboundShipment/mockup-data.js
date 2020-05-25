@@ -454,6 +454,53 @@ module.exports = {
       }
     }
   },
+  listInboundShipmentsByNextToken: {
+    ListInboundShipmentsByNextTokenResult: {
+      NextToken: 'QVYyVTY5NUVaQzBDWHw0ODh8MjAwfCB8IHw1OTM0MDZ8IHwwLDJ8IHwgfCB8IHx0cnVl',
+      ShipmentData: {
+        member: [
+          {
+            ShipFromAddress: {
+              PostalCode: '98101',
+              Name: 'Joan Doe',
+              CountryCode: 'US',
+              StateOrProvinceCode: 'WA',
+              AddressLine2: 'Apt 2',
+              AddressLine1: '876 Elm St',
+              City: 'Seattle'
+            },
+            AreCasesRequired: false,
+            ShipmentId: 'SSF85DGIZZ7PKF',
+            ShipmentStatus: 'WORKING',
+            ShipmentName: 'ExampleShipmentName4',
+            DestinationFulfillmentCenterId: 'RNO2',
+            LabelPrepType: 'SELLER_LABEL'
+          },
+          {
+            ShipFromAddress: {
+              PostalCode: '98101',
+              Name: 'Joan Doe',
+              CountryCode: 'US',
+              StateOrProvinceCode: 'WA',
+              AddressLine2: 'Apt 2',
+              AddressLine1: '876 Elm St',
+              City: 'Seattle'
+            },
+            AreCasesRequired: true,
+            ShipmentId: 'SSF85DGIZZ7PL3',
+            ShipmentStatus: 'SHIPPED',
+            ShipmentName: 'ExampleShipmentName5',
+            DestinationFulfillmentCenterId: 'RNO2',
+            LabelPrepType: 'SELLER_LABEL',
+            ConfirmedNeedByDate: '2015-12-30'
+          }
+        ]
+      }
+    },
+    ResponseMetadata: {
+      RequestId: '8547a35c-8e70-11df-8af1-5bf2881764d8'
+    }
+  },
   listInboundShipmentItems: {
     ListInboundShipmentItemsResponse: {
       xmlns: 'http://mws.amazonaws.com/FulfillmentInboundShipment/2010-10-01/',
@@ -483,6 +530,35 @@ module.exports = {
       ResponseMetadata: {
         RequestId: 'ffce8932-8e69-11df-8af1-5bf2881764d8'
       }
+    }
+  },
+  listInboundShipmentItemsByNextToken: {
+    ListInboundShipmentItemsByNextTokenResult: {
+      ItemData: {
+        member: {
+          QuantityShipped: '2',
+          ShipmentId: 'FBA0000001',
+          FulfillmentNetworkSKU: 'FNSKU1',
+          SellerSKU: 'SKU00001',
+          QuantityReceived: '0',
+          QuantityInCase: '0',
+          PrepDetailsList: {
+            PrepDetails: [
+              {
+                PrepInstruction: 'Taping',
+                PrepOwner: 'AMAZON'
+              },
+              {
+                PrepInstruction: 'Polybagging',
+                PrepOwner: 'AMAZON'
+              }
+            ]
+          }
+        }
+      }
+    },
+    ResponseMetadata: {
+      RequestId: '9581f746-c8fb-42ca-ad20-42f8a5333a1b'
     }
   },
   getServiceStatus: {
