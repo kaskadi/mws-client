@@ -33,12 +33,15 @@ _Examples:_
 - `Feeds`
   - `submitFeed`
   - `getFeedSubmissionList`
+  - `getFeedSubmissionListByNextToken`
   - `getFeedSubmissionCount`
   - `cancelFeedSubmissions`
   - `getFeedSubmissionResult`
 - `Finances`
   - `listFinancialEventGroups`
+  - `listFinancialEventGroupsByNextToken`
   - `listFinancialEvents`
+  - `listFinancialEventsByNextToken`
   - `getServiceStatus`
 - `FulfillmentInboundShipment`
   - `getInboundGuidanceForSKU`
@@ -60,10 +63,13 @@ _Examples:_
   - `getPalletLabels`
   - `getBillOfLading`
   - `listInboundShipments`
+  - `listInboundShipmentsByNextToken`
   - `listInboundShipmentItems`
+  - `listInboundShipmentItemsByNextToken`
   - `getServiceStatus`
 - `FulfillmentInventory`
   - `listInventorySupply`
+  - `listInventorySupplyByNextToken`
   - `getServiceStatus`
 - `FulfillmentOutboundShipment`
   - `getFulfillmentPreview`
@@ -71,6 +77,7 @@ _Examples:_
   - `updateFulfillmentOrder`
   - `listAllFulfillmentOrders`
   - `getFulfillmentOrder`
+  - `listAllFulfillmentOrdersByNextToken`
   - `getPackageTrackingDetails`
   - `cancelFulfillmentOrder`
   - `listReturnReasonCodes`
@@ -78,14 +85,17 @@ _Examples:_
   - `getServiceStatus`
 - `MerchantFulfillment`
   - `getEligibleShippingServices`
+  - `getAdditionalSellerInputs`
   - `createShipment`
   - `getShipment`
   - `cancelShipment`
   - `getServiceStatus`
 - `Orders`
   - `listOrders`
+  - `listOrdersByNextToken`
   - `getOrder`
   - `listOrderItems`
+  - `listOrderItemsByNextToken`
   - `getServiceStatus`
 - `Products`
   - `listMatchingProducts`
@@ -106,13 +116,16 @@ _Examples:_
 - `Recommendations`
   - `getLastUpdatedTimeForRecommendations`
   - `listRecommendations`
+  - `listRecommendationsByNextToken`
   - `getServiceStatus`
 - `Reports`
   - `requestReport`
   - `getReportRequestList`
+  - `getReportRequestListByNextToken`
   - `getReportRequestCount`
   - `cancelReportRequests`
   - `getReportList`
+  - `getReportListByNextToken`
   - `getReportCount`
   - `getReport`
   - `manageReportSchedule`
@@ -121,6 +134,12 @@ _Examples:_
   - `updateReportAcknowledgements`
 - `Sellers`
   - `listMarketplaceParticipations`
+  - `listMarketplaceParticipationsByNextToken`
+  - `getServiceStatus`
+- `ShipmentInvoicing`
+  - `getFBAOutboundShipmentDetail`
+  - `submitFBAOutboundShipmentInvoice`
+  - `getFBAOutboundShipmentInvoiceStatus`
   - `getServiceStatus`
 - `Subscriptions`
   - `registerDestination`
