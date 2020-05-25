@@ -33,6 +33,21 @@ module.exports = {
       }
     }
   },
+  getFeedSubmissionListByNextToken: {
+    GetFeedSubmissionListByNextTokenResult: {
+      NextToken: 'none',
+      HasNext: false,
+      FeedSubmissionInfo: {
+        FeedSubmissionId: '2291326430',
+        FeedType: '_POST_PRODUCT_DATA_',
+        SubmittedDate: '2009-02-20T02:10:35+00:00',
+        FeedProcessingStatus: '_SUBMITTED_'
+      }
+    },
+    ResponseMetadata: {
+      RequestId: '1105b931-6f1c-4480-8e97-f3b467840a9e'
+    }
+  },
   getFeedSubmissionCount: {
     GetFeedSubmissionCountResponse: {
       xmlns: 'http://mws.amazonaws.com/doc/2009-01-01/',
