@@ -164,6 +164,39 @@ module.exports = {
       }
     }
   },
+  listOrdersByNextToken: {
+    ListOrdersByNextTokenResult: {
+      Orders: {
+        Order: {
+          AmazonOrderId: '902-3159896-1390916',
+          PurchaseDate: '2017-01-20T19:49:35Z',
+          LastUpdateDate: '2017-01-20T19:49:35Z',
+          OrderStatus: 'Pending',
+          FulfillmentChannel: 'MFN',
+          NumberOfItemsShipped: '0',
+          NumberOfItemsUnshipped: '0',
+          PaymentMethod: 'Other',
+          PaymentMethodDetails: {
+            PaymentMethodDetail: [
+              'CreditCard',
+              'GiftCerificate'
+            ]
+          },
+          MarketplaceId: 'A21TJRUUN4KGV',
+          ShipmentServiceLevelCategory: 'Standard',
+          OrderType: 'StandardOrder',
+          EarliestShipDate: '2017-01-20T19:51:16Z',
+          LatestShipDate: '2017-01-25T19:49:35Z',
+          IsBusinessOrder: false,
+          IsPrime: false,
+          IsPremiumOrder: false
+        }
+      }
+    },
+    ResponseMetadata: {
+      RequestId: '88faca76-b600-46d2-b53c-0c8c4533e43a'
+    }
+  },
   getOrder: {
     GetOrderResponse: {
       xmlns: 'https://mws.amazonservices.com/Orders/2013-09-01',
@@ -286,6 +319,73 @@ module.exports = {
       ResponseMetadata: {
         RequestId: '88faca76-b600-46d2-b53c-0c8c4533e43a'
       }
+    }
+  },
+  listOrderItemsByNextToken: {
+    ListOrderItemsByNextTokenResult: {
+      NextToken: 'MRgZW55IGNhcm5hbCBwbGVhc3VyZS6=',
+      AmazonOrderId: '058-1233752-8214740',
+      OrderItems: {
+        OrderItem: [
+          {
+            ASIN: 'BT0093TELA',
+            OrderItemId: '68828574383266',
+            SellerSKU: 'CBA_OTF_1',
+            Title: 'Example item name',
+            QuantityOrdered: '1',
+            QuantityShipped: '1',
+            ItemPrice: {
+              CurrencyCode: 'USD',
+              Amount: '25.99'
+            },
+            ShippingPrice: {
+              CurrencyCode: 'USD',
+              Amount: '1.26'
+            },
+            ScheduledDeliveryEndDate: '2013-09-091T01:30:00.000-06:00',
+            ScheduledDeliveryStartDate: '2013-09-06T02:00:00.000-06:00',
+            CODFee: {
+              CurrencyCode: 'USD',
+              Amount: '10.00'
+            },
+            CODFeeDiscount: {
+              CurrencyCode: 'USD',
+              Amount: '1.00'
+            },
+            IsGift: false,
+            GiftMessageText: 'For you!',
+            GiftWrapPrice: {
+              CurrencyCode: 'USD',
+              Amount: '1.99'
+            },
+            GiftWrapLevel: 'Classic',
+            PriceDesignation: 'BusinessPrice'
+          },
+          {
+            ASIN: 'BCTU1104UEFB',
+            OrderItemId: '79039765272157',
+            SellerSKU: 'CBA_OTF_5',
+            Title: 'Example item name',
+            QuantityOrdered: '2',
+            ItemPrice: {
+              CurrencyCode: 'USD',
+              Amount: '17.95'
+            },
+            PromotionIds: {
+              PromotionId: 'FREESHIP'
+            },
+            ConditionId: 'Used',
+            ConditionSubtypeId: 'Mint',
+            ConditionNote: 'Example ConditionNote',
+            IsGift: false,
+            IsTransparency: true,
+            PriceDesignation: 'BusinessPrice'
+          }
+        ]
+      }
+    },
+    ResponseMetadata: {
+      RequestId: '88faca76-b600-46d2-b53c-0c8c4533e43a'
     }
   },
   getServiceStatus: {
