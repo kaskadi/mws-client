@@ -4,7 +4,7 @@ class FulfillmentOutboundShipment extends Section {
     super(parent)
     this._section = 'FulfillmentOutboundShipment'
     this.Version = '2010-10-01'
-    require('../attach-methods.js').bind(this)(['getFulfillmentPreview', 'createFulfillmentOrder', 'updateFulfillmentOrder', 'listAllFulfillmentOrders', 'getFulfillmentOrder', 'getPackageTrackingDetails', 'cancelFulfillmentOrder', 'listReturnReasonCodes', 'createFulfillmentReturn', 'getServiceStatus'])
+    require('../attach-methods.js').bind(this)(['getFulfillmentPreview', 'createFulfillmentOrder', 'updateFulfillmentOrder', 'listAllFulfillmentOrders', 'getFulfillmentOrder', 'listAllFulfillmentOrdersByNextToken', 'getPackageTrackingDetails', 'cancelFulfillmentOrder', 'listReturnReasonCodes', 'createFulfillmentReturn', 'getServiceStatus'])
   }
 }
 
