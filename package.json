@@ -1,6 +1,6 @@
 {
   "name": "mws-client",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "an api wrapper for Amazon Marketplace Webservice API",
   "main": "index.js",
   "scripts": {
