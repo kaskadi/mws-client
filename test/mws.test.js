@@ -1,5 +1,4 @@
 /* eslint-disable */
-require('./utils/set-env.js')
 const version = require('../package.json').version
 
 var assert = require('assert')

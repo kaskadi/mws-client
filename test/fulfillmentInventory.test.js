@@ -1,5 +1,4 @@
 /* eslint no-undef: "off" */
-require('./utils/set-env.js')
 const MWS = require('../')({ AWSAccessKeyId: process.env.AWS_ACCESS_KEY, SellerId: process.env.SELLER_ID, MWSAuthToken: process.env.MWS_AUTH_TOKEN })
 
 var assert = require('assert')
