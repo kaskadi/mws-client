@@ -83,11 +83,14 @@ ${querystring.stringify(rqs)}`
 // helper functions
 
 async function makeRequest (url, method, body, ua) {
-  var res = await fetch(url, {
+  const res = await fetch(url, {
     method: method,
     headers: { 'User-Agent': ua }
   })
-  return parser.toJson(await res.text(), { object: true })
+  return {
+    headers: res.headers,
+    body: parser.toJson(await res.text(), { object: true })
+  }
 }
 
 module.exports = opt => new MWS(opt)
