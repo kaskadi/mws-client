@@ -89,6 +89,7 @@ async function makeRequest (url, method, body, ua) {
   })
   return {
     headers: res.headers,
+    status: res.status,
     body: parser.toJson(await res.text(), { object: true })
   }
 }

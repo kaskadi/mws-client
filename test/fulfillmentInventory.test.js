@@ -17,10 +17,12 @@ describe('MWS.fulfillmentInventory', function () {
   describe('MWS.fulfillmentInventory.listInventorySupplyByNextToken()', function () {
     it('should return next page inventory data if a next token exists', async function () {
       this.timeout(5000)
-      const token = inventorySupplyData.ListInventorySupplyResponse.ListInventorySupplyResult.NextToken
+      const token = inventorySupplyData.body.ListInventorySupplyResponse.ListInventorySupplyResult.NextToken
       if (token) {
         const ret = await MWS.fulfillmentInventory.listInventorySupplyByNextToken({ NextToken: token, _marketplace: 'DE' })
         testListInventorySupplyByNextToken(ret)
+      } else {
+        assert(true)
       }
     })
   })
@@ -35,15 +37,15 @@ describe('MWS.fulfillmentInventory', function () {
 // Helper functions
 
 function testListInventorySupply (ret) {
-  assert(ret.ListInventorySupplyResponse, 'Response was a ListInventorySupplyResponse')
-  assert(ret.ListInventorySupplyResponse.ListInventorySupplyResult.InventorySupplyList, 'Response contains an InventorySupplyList')
+  assert(ret.body.ListInventorySupplyResponse, 'Response was not a ListInventorySupplyResponse')
+  assert(ret.body.ListInventorySupplyResponse.ListInventorySupplyResult.InventorySupplyList, 'Response does not contains an InventorySupplyList')
 }
 
 function testListInventorySupplyByNextToken (ret) {
-  assert(ret.ListInventorySupplyByNextTokenResponse, 'Response was a ListInventorySupplyByNextTokenResponse')
-  assert(ret.ListInventorySupplyByNextTokenResponse.ListInventorySupplyByNextTokenResult.InventorySupplyList, 'Response contains an InventorySupplyList')
+  assert(ret.body.ListInventorySupplyByNextTokenResponse, 'Response was not a ListInventorySupplyByNextTokenResponse')
+  assert(ret.body.ListInventorySupplyByNextTokenResponse.ListInventorySupplyByNextTokenResult.InventorySupplyList, 'Response does not contains an InventorySupplyList')
 }
 
 function testStatus (ret) {
-  assert(ret.GetServiceStatusResponse, 'No response or error received from the service')
+  assert(ret.body.GetServiceStatusResponse, 'No response or error received from the service')
 }
