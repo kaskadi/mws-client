@@ -11,6 +11,7 @@
   - `SignatureVersion` `<String>` [optional]: your desired signature version. _Default:_ `'2'`
   - `SignatureMethod` `<String>` [optional]: your desired signature method. _Default:_ `'HmacSHA256'`
   - `userAgent` `<String>` [optional]: your desired user agent. _Default:_ `'kaskadi-mws-client/VERSION (Language=node.js)'`
+  - `parserType` `<String>` [optional]: your desired parser for the response received from MWS. Accepts `'xml'` and `'text'` as for now _Default:_ `'xml'`
 - returns `<Class>`, instance of MWS client
 
 **Client usage:**

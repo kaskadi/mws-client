@@ -1,7 +1,6 @@
 const crypto = require('crypto')
 const querystring = require('querystring')
 const fetch = require('node-fetch')
-const parser = require('xml2json')
 const fs = require('fs')
 const path = require('path')
 
@@ -16,15 +15,17 @@ class MWS {
     const MWS_DEFAULT_OPTIONS = {
       SignatureVersion: '2', // we might switch to 4 later
       SignatureMethod: 'HmacSHA256',
-      userAgent: `kaskadi-mws-client/${require('./package.json').version} (Language=node.js)`
+      userAgent: `kaskadi-mws-client/${require('./package.json').version} (Language=node.js)`,
+      parserType: 'xml'
     }
     const options = { ...MWS_DEFAULT_OPTIONS, ...opt }
-    this.SignatureVersion = options.SignatureVersion
-    this.SignatureMethod = options.SignatureMethod
-    this.AWSAccessKeyId = options.AWSAccessKeyId
-    this.MWSAuthToken = options.MWSAuthToken
-    this.SellerId = options.SellerId
-    this.userAgent = options.userAgent
+    const supportedParsers = ['xml', 'text']
+    if (!supportedParsers.includes(options.parserType)) {
+      throw new Error(`${options.parserType} is not a valid parser type. Supported parser types are: ${supportedParsers.join(', ')}`)
+    }
+    for (const option in options) {
+      this[option] = options[option]
+    }
     fs.readdirSync(path.join(__dirname, 'api'), { withFileTypes: true }).filter(dirent => dirent.isDirectory()).map(dirent => dirent.name).forEach(section => {
       this[section.charAt(0).toLowerCase() + section.slice(1)] = require(`./api/${section}/${section}.js`)(this)
     })
@@ -62,7 +63,7 @@ ${querystring.stringify(rqs)}`
     stringToSign = stringToSign.replace(/\)/g, '%29')
     rqs.Signature = this._sign(stringToSign, this.MWSAuthToken)
 
-    return makeRequest(`https://${MarketplaceEndpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`, httpMethod, null, this.userAgent)
+    return makeRequest(`https://${MarketplaceEndpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`, httpMethod, null, this.userAgent, this.parserType)
   }
 
   _filterObject (obj) {
@@ -82,7 +83,7 @@ ${querystring.stringify(rqs)}`
 
 // helper functions
 
-async function makeRequest (url, method, body, ua) {
+async function makeRequest (url, method, body, ua, parserType) {
   const res = await fetch(url, {
     method: method,
     headers: { 'User-Agent': ua }
@@ -90,7 +91,17 @@ async function makeRequest (url, method, body, ua) {
   return {
     headers: res.headers,
     status: res.status,
-    body: parser.toJson(await res.text(), { object: true })
+    body: parseBody(await res.text(), parserType)
+  }
+}
+
+function parseBody (body, parserType) {
+  switch (parserType) {
+    case 'xml':
+      return require('xml2json').toJson(body, { object: true })
+    case 'text':
+    default:
+      return body
   }
 }
 
