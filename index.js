@@ -32,12 +32,9 @@ class MWS {
   }
 
   request (opt) {
-    let endpoint = 'mws.amazonservices.com' // unique endpoint for Reports API f.e.
-    if (opt._marketplace) {
-      const marketplaces = require('./data/marketplaces.js')
-      opt.MarketplaceId = marketplaces[opt._marketplace].id
-      endpoint = marketplaces[opt._marketplace].endpoint
-    }
+    const marketplaces = require('./data/marketplaces.js')
+    const MarketplaceId = marketplaces[opt._marketplace].id
+    const MarketplaceEndpoint = marketplaces[opt._marketplace].endpoint
     var rqs = {
       ...{
         Timestamp: new Date().toISOString(),
@@ -45,6 +42,7 @@ class MWS {
         SignatureVersion: this.SignatureVersion,
         SignatureMethod: this.SignatureMethod,
         SellerId: this.SellerId,
+        MarketplaceId,
         _httpMethod: 'GET'
       },
       ...opt
@@ -55,7 +53,7 @@ class MWS {
     // ------------------------------------------------------------------------------
     // do not insert tabs or spaces here! formatting is important
     var stringToSign = `${httpMethod}
-${endpoint}
+${MarketplaceEndpoint}
 /${opt._section}/${opt.Version}
 ${querystring.stringify(rqs)}`
     // ------------------------------------------------------------------------------
@@ -65,7 +63,7 @@ ${querystring.stringify(rqs)}`
     stringToSign = stringToSign.replace(/\)/g, '%29')
     rqs.Signature = this._sign(stringToSign, this.MWSAuthToken)
 
-    return makeRequest(`https://${endpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`, httpMethod, null, this.userAgent, this.parserType)
+    return makeRequest(`https://${MarketplaceEndpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`, httpMethod, null, this.userAgent, this.parserType)
   }
 
   _filterObject (obj) {
