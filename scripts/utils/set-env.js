@@ -9,7 +9,7 @@ if (!process.env.GITHUB_ACTIONS) {
   }
   dotenv.config({ path: confPath })
 } else {
-  const missingEnvVars = ['AWS_ACCESS_KEY', 'MWS_AUTH_TOKEN', 'SELLER_ID'].filter(envVar => !process.env[envVar])
+  const missingEnvVars = ['MWS_KEY_ID', 'MWS_KEY_SECRET', 'AMZ_EU_SELLER_ID'].filter(envVar => !process.env[envVar])
   if (missingEnvVars.length > 0) {
     console.log(`Missing environment ${missingEnvVars.length > 1 ? 'variables' : 'variable'} ${missingEnvVars.join(', ')}, stopping process...`)
     process.exit()

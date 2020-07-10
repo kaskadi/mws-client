@@ -1,5 +1,5 @@
 /* eslint no-undef: "off" */
-const MWS = require('../')({ AWSAccessKeyId: process.env.AWS_ACCESS_KEY, SellerId: process.env.SELLER_ID, MWSAuthToken: process.env.MWS_AUTH_TOKEN })
+const MWS = require('../')({ AWSAccessKeyId: process.env.MWS_KEY_ID, SellerId: process.env.AMZ_EU_SELLER_ID, MWSAuthToken: process.env.MWS_KEY_SECRET })
 
 var assert = require('assert')
 describe('MWS.fulfillmentInventory', function () {

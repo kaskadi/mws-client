@@ -22,10 +22,6 @@ jobs:
         node-version: 12
         registry-url: https://registry.npmjs.org/
     - name: Publish to NPM
-      uses: kaskadi/action-npmpub@master
+      uses: JS-DevTools/npm-publish@v1
       with:
-        USERNAME: Alexis Lemaire
-        EMAIL: a.lemaire@klimapartner.de
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        COMMIT_MSG: ${{ github.event.head_commit.message }}
+        token: ${{ secrets.NPM_TOKEN }}
