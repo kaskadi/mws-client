@@ -1,6 +1,6 @@
 {
   "name": "mws-client",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "an api wrapper for Amazon Marketplace Webservice API",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,20 @@
     "coverage": "node ./scripts/coverage.js",
     "add-section": "node tools/section-generator.js"
   },
-  "author": "",
+  "keywords": [
+    "mws",
+    "client",
+    "fulfillment",
+    "order",
+    "amazon",
+    "marketplace",
+    "api"
+  ],
+  "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
+  "contributors": [
+    "Holger Will <h.will@klimapartner.de>",
+    "Alexis Lemaire <a.lemaire@klimapartner.de>"
+  ],
   "license": "MIT",
   "dependencies": {
     "dotenv": "^8.2.0",
