@@ -1,0 +1,5 @@
+{
+  "name": "Sellers",
+  "version": "2011-07-01",
+  "methods": ["listMarketplaceParticipations", "listMarketplaceParticipationsByNextToken", "getServiceStatus"]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Reports",
+  "version": "2009-01-01",
+  "methods": ["requestReport", "getReportRequestList", "getReportRequestListByNextToken", "getReportRequestCount", "cancelReportRequests", "getReportList", "getReportListByNextToken", "getReportCount", "getReport", "manageReportSchedule", "getReportScheduleList", "getReportScheduleCount", "updateReportAcknowledgements"]
+}

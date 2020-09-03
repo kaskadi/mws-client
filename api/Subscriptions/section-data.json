@@ -1,0 +1,5 @@
+{
+  "name": "Subscriptions",
+  "version": "2013-07-01",
+  "methods": ["registerDestination", "deregisterDestination", "listRegisteredDestinations", "sendTestNotificationToDestination", "createSubscription", "getSubscription", "deleteSubscription", "listSubscriptions", "updateSubscription", "getServiceStatus"]
+}

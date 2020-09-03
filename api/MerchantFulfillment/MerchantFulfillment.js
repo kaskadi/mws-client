@@ -2,9 +2,7 @@ const Section = require('../section.js')
 class MerchantFulfillment extends Section {
   constructor (parent) {
     super(parent)
-    this._section = 'MerchantFulfillment'
-    this.Version = '2015-06-01'
-    require('../attach-methods.js').bind(this)(['getEligibleShippingServices', 'getAdditionalSellerInputs', 'createShipment', 'getShipment', 'cancelShipment', 'getServiceStatus'])
+    require('../create-section.js').bind(this)(require('./section-data.json'))
   }
 }
 

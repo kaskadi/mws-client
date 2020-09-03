@@ -1,0 +1,5 @@
+{
+  "name": "Finances",
+  "version": "2015-05-01",
+  "methods": ["listFinancialEventGroups", "listFinancialEventGroupsByNextToken", "listFinancialEvents", "listFinancialEventsByNextToken", "getServiceStatus"]
+}

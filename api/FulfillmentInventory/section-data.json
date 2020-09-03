@@ -1,0 +1,5 @@
+{
+  "name": "FulfillmentInventory",
+  "version": "2010-10-01",
+  "methods": ["listInventorySupply", "listInventorySupplyByNextToken", "getServiceStatus"]
+}

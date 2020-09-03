@@ -1,0 +1,5 @@
+{
+  "name": "Feeds",
+  "version": "2009-01-01",
+  "methods": ["submitFeed", "getFeedSubmissionList", "getFeedSubmissionListByNextToken", "getFeedSubmissionCount", "cancelFeedSubmissions", "getFeedSubmissionResult"]
+}

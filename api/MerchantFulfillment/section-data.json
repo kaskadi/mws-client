@@ -1,0 +1,5 @@
+{
+  "name": "MerchantFulfillment",
+  "version": "2015-06-01",
+  "methods": ["getEligibleShippingServices", "getAdditionalSellerInputs", "createShipment", "getShipment", "cancelShipment", "getServiceStatus"]
+}
