@@ -4,6 +4,8 @@ const fetch = require('node-fetch')
 const fs = require('fs')
 const path = require('path')
 
+const createSection = require('./api/create-section.js')
+
 const nodeVersion = process.version
 if (Number(nodeVersion.split('.')[0].slice(1)) < 12) {
   throw Error(`Your current node version is ${nodeVersion}. This client requires you to run at least node 12 to work properly.`)
@@ -27,7 +29,8 @@ class MWS {
       this[option] = options[option]
     }
     fs.readdirSync(path.join(__dirname, 'api'), { withFileTypes: true }).filter(dirent => dirent.isDirectory()).map(dirent => dirent.name).forEach(section => {
-      this[section.charAt(0).toLowerCase() + section.slice(1)] = require(`./api/${section}/${section}.js`)(this)
+      const sectionData = require(`./api/${section}/section-data.json`)
+      this[section.charAt(0).toLowerCase() + section.slice(1)] = createSection(sectionData, this)
     })
   }
 
