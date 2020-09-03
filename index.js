@@ -35,35 +35,28 @@ class MWS {
     const marketplaces = require('./data/marketplaces.js')
     const MarketplaceId = marketplaces[opt._marketplace].id
     const MarketplaceEndpoint = marketplaces[opt._marketplace].endpoint
-    var rqs = {
-      ...{
-        Timestamp: new Date().toISOString(),
-        AWSAccessKeyId: this.AWSAccessKeyId,
-        SignatureVersion: this.SignatureVersion,
-        SignatureMethod: this.SignatureMethod,
-        SellerId: this.SellerId,
-        MarketplaceId,
-        _httpMethod: 'GET'
-      },
-      ...opt
-    }
+    const Timestamp = new Date().toISOString()
+    const { AWSAccessKeyId, SignatureVersion, SignatureMethod, SellerId } = this
+    const _httpMethod = 'GET'
+    let rqs = { Timestamp, AWSAccessKeyId, SignatureVersion, SignatureMethod, SellerId, MarketplaceId, _httpMethod, ...opt }
     const httpMethod = rqs._httpMethod
-    rqs = this._filterObject(rqs)
-    rqs = this._sortObject(rqs)
+    rqs = this._sortObject(this._filterObject(rqs))
     // ------------------------------------------------------------------------------
     // do not insert tabs or spaces here! formatting is important
-    var stringToSign = `${httpMethod}
+    let stringToSign = `${httpMethod}
 ${MarketplaceEndpoint}
 /${opt._section}/${opt.Version}
 ${querystring.stringify(rqs)}`
     // ------------------------------------------------------------------------------
-    stringToSign = stringToSign.replace(/'/g, '%27')
-    stringToSign = stringToSign.replace(/\*/g, '%2A')
-    stringToSign = stringToSign.replace(/\(/g, '%28')
-    stringToSign = stringToSign.replace(/\)/g, '%29')
+    stringToSign = stringToSign.replace(/'/g, '%27').replace(/\*/g, '%2A').replace(/\(/g, '%28').replace(/\)/g, '%29')
     rqs.Signature = this._sign(stringToSign, this.MWSAuthToken)
-
-    return makeRequest(`https://${MarketplaceEndpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`, httpMethod, null, this.userAgent, this.parserType)
+    const reqOpts = {
+      url: `https://${MarketplaceEndpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`,
+      method: httpMethod,
+      ua: this.userAgent,
+      parserType: this.parserType
+    }
+    return makeRequest(reqOpts)
   }
 
   _filterObject (obj) {
@@ -83,15 +76,15 @@ ${querystring.stringify(rqs)}`
 
 // helper functions
 
-async function makeRequest (url, method, body, ua, parserType) {
-  const res = await fetch(url, {
-    method: method,
-    headers: { 'User-Agent': ua }
+async function makeRequest (opts) {
+  const res = await fetch(opts.url, {
+    method: opts.method,
+    headers: { 'User-Agent': opts.ua }
   })
   return {
     headers: res.headers,
     status: res.status,
-    body: parseBody(await res.text(), parserType)
+    body: parseBody(await res.text(), opts.parserType)
   }
 }
 
