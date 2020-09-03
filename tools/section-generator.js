@@ -5,6 +5,9 @@ const rl = readline.createInterface({
   output: process.stdout
 })
 
+const fs = require('fs')
+const path = require('path')
+
 rl.question('Enter the section name: ', function (section) {
   rl.question('Enter the section version: ', function (version) {
     rl.question('Enter all the endpoints (separated by space): ', function (endpoints) {
@@ -15,36 +18,29 @@ rl.question('Enter the section name: ', function (section) {
 })
 
 function processInputs (section, version, endpoints) {
-  const fs = require('fs')
-  const path = require('path')
+  const dirPath = getDirPath(section)
+  fs.mkdirSync(dirPath)
+  endpoints = endpoints.split(' ').map(endpoint => endpoint.charAt(0).toLowerCase() + endpoint.slice(1))
+  const { sectionData, mockupData } = getData(section, version, endpoints)
+  fs.writeFileSync(path.join(dirPath, 'mockup-data.json'), JSON.stringify(mockupData, null, 2), 'utf8')
+  fs.writeFileSync(path.join(dirPath, 'section-data.json'), JSON.stringify(sectionData, null, 2), 'utf8')
+}
+
+function getDirPath (section) {
   let pathParts = []
   if (path.basename === 'tools') {
     pathParts.push('..')
   }
   pathParts = [...pathParts, ...['api', section]]
-  const dirPath = path.join(...pathParts)
-  fs.mkdirSync(dirPath)
-  endpoints = endpoints.split(' ').map(endpoint => endpoint.charAt(0).toLowerCase() + endpoint.slice(1))
-  fs.writeFileSync(path.join(dirPath, 'mockup-data.js'), getMockupData(endpoints), 'utf8')
-  fs.writeFileSync(path.join(dirPath, `${section}.js`), getHandler(section, version, endpoints), 'utf8')
+  return path.join(...pathParts)
 }
 
-function getMockupData (endpoints) {
-  return `module.exports = {
-${endpoints.map((endpoint, i, arr) => i !== arr.length - 1 ? `  ${endpoint}: {},\n` : `  ${endpoint}: {}`).join('')}
-}\n`
-}
-
-function getHandler (section, version, endpoints) {
-  return `const Section = require('../section.js')
-class ${section} extends Section {
-  constructor (parent) {
-    super(parent)
-    this._section = '${section}'
-    this.Version = '${version}'
-    require('../attach-methods.js').bind(this)([${endpoints.map(endpoint => `'${endpoint}'`).join(', ')}])
+function getData (section, version, endpoints) {
+  const sectionData = {
+    name: section,
+    version,
+    methods: endpoints
   }
-}
-
-module.exports = parent => new ${section}(parent)\n`
+  const mockupData = Object.fromEntries(endpoints.map(endpoint => [endpoint, {}]))
+  return { sectionData, mockupData }
 }
