@@ -1,9 +1,10 @@
 name: build
 on:
-  push:
+  pull_request:
     branches:
       - 'master'
-      - 'dev'
+      - 'release/**'
+    types: [opened, reopened, edited, synchronize]
     paths:
       - 'index.js'
       - 'api/**'
@@ -16,9 +17,15 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: npm i
-    - name: Test
-      run: npm run test
+    - name: Generate coverage report
+      run: npm run coverage
       env:
         MWS_KEY_ID: ${{ secrets.MWS_KEY_ID }}
         MWS_KEY_SECRET: ${{ secrets.MWS_KEY_SECRET }}
         AMZ_EU_SELLER_ID: ${{ secrets.AMZ_EU_SELLER_ID }}
+    - name: Upload report to Code Climate
+      uses: kaskadi/action-cc-reporter@master
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.REPORTER_ID }}
+        GIT_BRANCH: ${{ github.base_ref }}
+        GIT_COMMIT: ${{ github.sha }}
