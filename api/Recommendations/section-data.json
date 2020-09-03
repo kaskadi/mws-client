@@ -1,0 +1,5 @@
+{
+  "name": "Recommendations",
+  "version": "2013-04-01",
+  "methods": ["getLastUpdatedTimeForRecommendations", "listRecommendations", "listRecommendationsByNextToken", "getServiceStatus"]
+}

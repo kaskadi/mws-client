@@ -2,9 +2,7 @@ const Section = require('../section.js')
 class Reports extends Section {
   constructor (parent) {
     super(parent)
-    this._section = 'Reports'
-    this.Version = '2009-01-01'
-    require('../attach-methods.js').bind(this)(['requestReport', 'getReportRequestList', 'getReportRequestListByNextToken', 'getReportRequestCount', 'cancelReportRequests', 'getReportList', 'getReportListByNextToken', 'getReportCount', 'getReport', 'manageReportSchedule', 'getReportScheduleList', 'getReportScheduleCount', 'updateReportAcknowledgements'])
+    require('../create-section.js').bind(this)(require('./section-data.json'))
   }
 }
 

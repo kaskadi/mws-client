@@ -1,0 +1,5 @@
+{
+  "name": "Products",
+  "version": "2011-10-01",
+  "methods": ["listMatchingProducts", "getMatchingProduct", "getMatchingProductForId", "getCompetitivePricingForSKU", "getCompetitivePricingForASIN", "getLowestOfferListingsForSKU", "getLowestOfferListingsForASIN", "getLowestPricedOffersForSKU", "getLowestPricedOffersForASIN", "getMyFeesEstimate", "getMyPriceForSKU", "getMyPriceForASIN", "getProductCategoriesForSKU", "getProductCategoriesForASIN", "getServiceStatus"]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "ShipmentInvoicing",
+  "version": "2018-11-01",
+  "methods": ["getFBAOutboundShipmentDetail", "submitFBAOutboundShipmentInvoice", "getFBAOutboundShipmentInvoiceStatus", "getServiceStatus"]
+}

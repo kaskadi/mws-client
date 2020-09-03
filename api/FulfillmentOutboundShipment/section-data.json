@@ -1,0 +1,5 @@
+{
+  "name": "FulfillmentOutboundShipment",
+  "version": "2010-10-01",
+  "methods": ["getFulfillmentPreview", "createFulfillmentOrder", "updateFulfillmentOrder", "listAllFulfillmentOrders", "getFulfillmentOrder", "listAllFulfillmentOrdersByNextToken", "getPackageTrackingDetails", "cancelFulfillmentOrder", "listReturnReasonCodes", "createFulfillmentReturn", "getServiceStatus"]
+}

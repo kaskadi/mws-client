@@ -1,0 +1,5 @@
+{
+  "name": "EasyShip",
+  "version": "2018-09-01",
+  "methods": ["listPickupSlots", "createScheduledPackage", "updateScheduledPackages", "getScheduledPackage", "getServiceStatus"]
+}
