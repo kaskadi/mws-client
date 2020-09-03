@@ -4,9 +4,9 @@
   "description": "an api wrapper for Amazon Marketplace Webservice API",
   "main": "index.js",
   "scripts": {
-    "test": "node ./scripts/test.js",
+    "test": "node ./test/utils/set-env.js && mocha test/*.test.js",
     "lint": "standard --fix",
-    "coverage": "node ./scripts/coverage.js",
+    "coverage": "nyc npm test",
     "add-section": "node tools/section-generator.js"
   },
   "keywords": [
@@ -33,5 +33,13 @@
     "mocha": "^8.1.1",
     "nyc": "^15.1.0",
     "standard": "^14.3.4"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "report-dir": "./coverage"
   }
 }
