@@ -93,11 +93,11 @@ async function makeRequest (opts) {
 
 function parseBody (body, parserType) {
   switch (parserType) {
-    case 'xml':
-      return require('xml2json').toJson(body, { object: true })
     case 'text':
-    default:
       return body
+    case 'xml':
+    default:
+      return require('xml2json').toJson(body, { object: true })
   }
 }
 

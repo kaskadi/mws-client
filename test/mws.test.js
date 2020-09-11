@@ -25,7 +25,7 @@ describe('MWS API', function () {
       b: [1, 5],
       c: 'Hey'
     }
-    assert.deepEqual(Object.entries(MWS._sortObject(testObj)), Object.entries(assertObj))
+    assert.deepStrictEqual(Object.entries(MWS._sortObject(testObj)), Object.entries(assertObj))
   })
   it('should be able to filter an object properties', function () {
     const MWS = require('../')({ AWSAccessKeyId: 'Hello', SellerId: 'Hey', MWSAuthToken: 'Token' })
@@ -38,18 +38,10 @@ describe('MWS API', function () {
       c: 'Hey',
       b: [1, 5]
     }
-    assert.deepEqual(MWS._filterObject(testObj), assertObj)
+    assert.deepStrictEqual(MWS._filterObject(testObj), assertObj)
   })
   it('should be able to sign a string with given key', function () {
     const MWS = require('../')({ AWSAccessKeyId: 'Hello', SellerId: 'Hey', MWSAuthToken: 'Token' })
     assert.strictEqual(MWS._sign('Test string', 'Sign key'), 'I1AGLbYD7gkVJYZl00J9eHQrdRCiKN910QcSHGgJN68=')
   })
 })
-
-// Helper functions
-
-// function delay (t) {
-//   return new Promise((res, rej) => {
-//     setTimeout(res, t)
-//   })
-// }
