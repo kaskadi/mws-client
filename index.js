@@ -56,8 +56,8 @@ ${querystring.stringify(rqs)}`
     const reqOpts = {
       url: `https://${MarketplaceEndpoint}/${opt._section}/${opt.Version}?${querystring.stringify(rqs)}`,
       method: httpMethod,
-      ua: this.userAgent,
-      parserType: this.parserType
+      ua: opt.userAgent || this.userAgent,
+      parserType: opt.parserType || this.parserType
     }
     return makeRequest(reqOpts)
   }
