@@ -1,4 +1,7 @@
-/** A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client** */
+/**
+ * A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client**
+ * @alias module:mws-client.Section
+ * */
 class Section {
   constructor (parent) {
     this.parent = parent
@@ -15,7 +18,7 @@ class Section {
   /**
    * Send a request to the given endpoint
    * @alias Section.endpoint
-   * @param {Object} opts - Parameters for the API call. See {@link #sections|here} for details regarding parameters for every endpoints. **Note: list parameters are not supporting arrays yet. You will have to build it in the same way as they appear in the query string of the signed request to MWS API (i.e. `param.1=foo&param.2=bar`)**
+   * @param {Object} opts - Parameters for the API call. See {@link #sections|here} for details regarding parameters for every endpoints. **Note: list parameters are not supporting `Array` type yet. You will have to build them in the same way as they appear in the query string of the signed request to MWS API (i.e. `param.1=foo&param.2=bar`)**
    * @return {MWSResponse} Response received from MWS API
    *
    * @example
