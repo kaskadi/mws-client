@@ -30,13 +30,13 @@ npm i mws-client
 ## Modules
 Module | Description
 ------ | -----------
-[mws-client] | Creates a new client to communicate with Collmex API.
+[mws-client] | Creates a new client to communicate with Collmex API
 
 ## Classes
 
 Name | Description
 ------ | -----------
-[Section] | A section of MWS API.
+[Section] | A section of MWS API
 
 ## Typedefs
 
@@ -49,7 +49,7 @@ Name | Description
 
 ## mws-client
 
-Creates a new client to communicate with Collmex API.
+Creates a new client to communicate with Collmex API
 
 **Returns**: [`MWS`] - MWS client  
 
@@ -68,26 +68,27 @@ const MWS = require('mws-client')({
 
 ## Section
 
-A section of MWS API.
+A section of MWS API
 
 **Kind**: global class  
 
-### Section.endpoint(opt)
+### Section.endpoint(opts)
 
-Send a request to the given endpoint.
+Send a request to the given endpoint
 
 **Kind**: static method of [`Section`]  
 **Returns**: [`MWSResponse`] - Response received from MWS API  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| opt | `Object` | parameters for the API call. See [here] for details regarding parameters for every endpoints. |
+| opts | `Object` | Parameters for the API call. See [here] for details regarding parameters for every endpoints. |
 
 **Example**  
 ```js
 const list = await MWS.fulfillmentInventory.listInventorySupply({
   QueryStartDateTime: new Date(d).toISOString(),
-  ResponseGroup: 'Basic', _marketplace: 'DE'
+  ResponseGroup: 'Basic',
+  _marketplace: 'DE'
 })
 
 const status = await MWS.fulfillmentInventory.getServiceStatus({ _marketplace: 'DE' })
@@ -102,9 +103,9 @@ Response received from MWS API
 
 | Name | Type | Description |
 | --- | --- | --- |
-| headers | `Object` | headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the `fetch` API. |
-| status | `number` | response status code |
-| body | `Object` | parsed body from _MWS API_ response |
+| headers | `Object` | Headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the {@external https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API|`fetch`} API. |
+| status | `number` | Response status code |
+| body | `Object` | Parsed body from _MWS API_ response |
 
 
 ## Options
