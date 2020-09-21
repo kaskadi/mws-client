@@ -1,6 +1,5 @@
 /**
  * A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client**
- * @alias module:mws-client.Section
  * */
 class Section {
   constructor (parent) {
