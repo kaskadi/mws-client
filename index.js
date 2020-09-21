@@ -11,6 +11,41 @@ if (Number(nodeVersion.split('.')[0].slice(1)) < 12) {
   throw Error(`Your current node version is ${nodeVersion}. This client requires you to run at least node 12 to work properly.`)
 }
 
+/**
+ * Options for the new MWS client instanciation
+ * @typedef {Object} Options
+ * @property {string} AWSAccessKeyId - AWS access key ID
+ * @property {string} MWSAuthToken - MWS authentication token
+ * @property {string} SellerId - Seller ID
+ * @property {string} [SignatureVersion=2] - Signature version used for signing to request URL
+ * @property {string} [SignatureMethod=HmacSHA256] - Signature method used for signing to request URL
+ * @property {string} [userAgent=kaskadi-mws-client/VERSION (Language=node.js)] - User agent used when sending request
+ * @property {string} [parserType=xml] - Parser used for the response received from MWS. Accepted values: `'xml'`, `'text'`
+ */
+
+/**
+ * MWS client
+ * @typedef {Class} MWS
+ * @property {Section} Section - a section of MWS API
+ */
+
+/**
+ *
+ * Creates a new client to communicate with Collmex API.
+ *
+ * @module mws-client
+ * @typicalname MWS
+ * @param {Options} opts - Options to be passed to instanciate a new client
+ * @returns {MWS} MWS client
+ *
+ * @example
+ * const MWS = require('mws-client')({
+ *   AWSAccessKeyId: process.env.YOUR_AWS_ACCESS_KEY,
+ *   SellerId: process.env.YOUR_SELLER_ID,
+ *   MWSAuthToken: process.env.YOUR_MWS_AUTH_TOKEN
+ * })
+ */
+
 class MWS {
   constructor (opt) {
     // these are all defaults. the rest must be passed with the constructor
