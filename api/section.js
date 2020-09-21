@@ -1,4 +1,4 @@
-/** A section of MWS API. **Note:** all sections and associated endpoints are generated automatically when instanciating a new client */
+/** A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client** */
 class Section {
   constructor (parent) {
     this.parent = parent
@@ -7,20 +7,15 @@ class Section {
   /**
    * Response received from MWS API
    * @typedef {Object} MWSResponse
-   * @property {Object} headers - Headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the {external:Fetch} API.
+   * @property {Object} headers - Headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the {@link https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API|`Fetch`} API.
    * @property {number} status - Response status code
    * @property {Object} body - Parsed body from _MWS API_ response
    */
 
   /**
-   * @external Fetch
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
-   */
-
-  /**
    * Send a request to the given endpoint
    * @alias Section.endpoint
-   * @param {Object} opts - Parameters for the API call. See {@link #sections|here} for details regarding parameters for every endpoints.
+   * @param {Object} opts - Parameters for the API call. See {@link #sections|here} for details regarding parameters for every endpoints. **Note: list parameters are not supporting arrays yet. You will have to build it in the same way as they appear in the query string of the signed request to MWS API (i.e. `param.1=foo&param.2=bar`)**
    * @return {MWSResponse} Response received from MWS API
    *
    * @example
