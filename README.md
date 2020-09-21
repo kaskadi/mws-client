@@ -1,5 +1,11 @@
-[![Build status](https://img.shields.io/github/workflow/status/kaskadi/mws-client/build?label=build&logo=mocha)](https://github.com/kaskadi/mws-client/actions?query=workflow%3Abuild)
-[![Publish status](https://img.shields.io/github/workflow/status/kaskadi/mws-client/publish?label=publish&logo=npm)](https://github.com/kaskadi/mws-client/actions?query=workflow%3Apublish)
+![](https://img.shields.io/github/package-json/v/kaskadi/mws-client)
+![](https://img.shields.io/badge/code--style-standard-blue)
+![](https://img.shields.io/github/license/kaskadi/mws-client?color=blue)
+
+**GitHub Actions workflows status**
+
+[![](https://img.shields.io/github/workflow/status/kaskadi/mws-client/publish?label=publish&logo=npm)](https://github.com/kaskadi/mws-client/actions?query=workflow%3Apublish)
+[![](https://img.shields.io/github/workflow/status/kaskadi/mws-client/build?label=build&logo=mocha)](https://github.com/kaskadi/mws-client/actions?query=workflow%3Abuild)
 
 **CodeClimate**
 
@@ -9,56 +15,143 @@
 
 **LGTM**
 
-[![](https://img.shields.io/lgtm/grade/javascript/github/kaskadi/mws-client?label=code%20quality&logo=lgtm)](https://lgtm.com/projects/g/kaskadi/mws-client/?mode=list)
+[![](https://img.shields.io/lgtm/grade/javascript/github/kaskadi/mws-client?label=code%20quality&logo=LGTM)](https://lgtm.com/projects/g/kaskadi/mws-client/?mode=list&logo=LGTM)
 
 ****
 
-# mws-node-client usage
-
-**Client initialization:**
+# Installation
 
 ```
+npm i mws-client
+```
+
+# API documentation
+
+## Modules
+Module | Description
+------ | -----------
+[mws-client] | Creates a new client to communicate with Collmex API.
+
+## Classes
+
+Name | Description
+------ | -----------
+[Section] | A section of MWS API.
+
+## Typedefs
+
+Name | Description
+------ | -----------
+[MWSResponse] | Response received from MWS API
+[Options] | Options for the new MWS client instanciation
+[MWS] | MWS client
+
+
+## mws-client
+
+Creates a new client to communicate with Collmex API.
+
+**Returns**: [`MWS`] - MWS client  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | [`Options`] | Options to be passed to instanciate a new client |
+
+**Example**  
+```js
 const MWS = require('mws-client')({
-  AWSAccessKeyId: 'YOUR_AWS_ACCESS_KEY',
-  SellerId: 'YOUR_SELLER_ID',
-  MWSAuthToken: 'YOUR_MWS_AUTH_TOKEN'
+  AWSAccessKeyId: process.env.YOUR_AWS_ACCESS_KEY,
+  SellerId: process.env.YOUR_SELLER_ID,
+  MWSAuthToken: process.env.YOUR_MWS_AUTH_TOKEN
 })
 ```
 
-- `options` `<Object>`
-  - `AWSAccessKeyId` `<String>`: your AWS access key ID
-  - `MWSAuthToken` `<String>`: your MWS authentication token
-  - `SellerId` `<String>`: your seller ID
-  - `SignatureVersion` `<String>` [optional]: your desired signature version. _Default:_ `'2'`
-  - `SignatureMethod` `<String>` [optional]: your desired signature method. _Default:_ `'HmacSHA256'`
-  - `userAgent` `<String>` [optional]: your desired user agent. _Default:_ `'kaskadi-mws-client/VERSION (Language=node.js)'`
-  - `parserType` `<String>` [optional]: your desired parser for the response received from MWS. Accepts `'xml'` and `'text'` as for now _Default:_ `'xml'`
-- returns `<Class>`, instance of MWS client
+## Section
 
-**Client usage:**
+A section of MWS API.
 
-Each API section is available as method of your `MWS` client. Each endpoint is then accessible as the method of the section. For example, `MWS.fulfillmentInventory.listInventorySupply(options)` will call the `listInventorySupply` `<Promise>` endpoint of the `fulfillmentInventory` section. The `options` used here are the regular ones for this endpoint.
+**Kind**: global class  
 
-_Examples:_
+### Section.endpoint(opt)
 
-- ```
-  const list = await MWS.fulfillmentInventory.listInventorySupply({
-    QueryStartDateTime: new Date(d).toISOString(),
-    ResponseGroup: 'Basic', _marketplace: 'DE'
-  })
-  ```
-- ```
-  const status = await MWS.fulfillmentInventory.getServiceStatus({ _marketplace: 'DE' })
-  ```
+Send a request to the given endpoint.
 
-**Return value:**
+**Kind**: static method of [`Section`]  
+**Returns**: [`MWSResponse`] - Response received from MWS API  
 
-Each endpoint of the MWS client returns an `<Object>` which contains:
-- `headers` `Headers <Object>`: the headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the `fetch` API.
-- `status` `<Number>`: response status code
-- `body` `<Object>`: parsed body from _MWS API_ XML response
+| Param | Type | Description |
+| --- | --- | --- |
+| opt | `Object` | parameters for the API call. See [here] for details regarding parameters for every endpoints. |
 
-**Note on throttling:**
+**Example**  
+```js
+const list = await MWS.fulfillmentInventory.listInventorySupply({
+  QueryStartDateTime: new Date(d).toISOString(),
+  ResponseGroup: 'Basic', _marketplace: 'DE'
+})
+
+const status = await MWS.fulfillmentInventory.getServiceStatus({ _marketplace: 'DE' })
+```
+
+## MWSResponse
+
+Response received from MWS API
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| headers | `Object` | headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the `fetch` API. |
+| status | `number` | response status code |
+| body | `Object` | parsed body from _MWS API_ response |
+
+
+## Options
+
+Options for the new MWS client instanciation
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| AWSAccessKeyId | `string` |  | AWS access key ID |
+| MWSAuthToken | `string` |  | MWS authentication token |
+| SellerId | `string` |  | Seller ID |
+| \[SignatureVersion\] | `string` | `'2'` | Signature version used for signing to request URL |
+| \[SignatureMethod\] | `string` | `'HmacSHA256'` | Signature method used for signing to request URL |
+| \[userAgent\] | `string` | `'kaskadi-mws-client/VERSION (Language&#x3D;node.js)'` | User agent used when sending request |
+| \[parserType\] | `string` | `'xml'` | Parser used for the response received from MWS. Accepted values: `'xml'`, `'text'` |
+
+
+## MWS
+
+MWS client
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| Section | [`Section`] | a section of MWS API |
+
+<!-- LINKS -->
+
+[mws-client]:#mws-client
+[Section]:#section
+[MWSResponse]:#mwsresponse
+[Options]:#options
+[MWS]:#mws
+[`MWS`]:#mws
+[`Options`]:#options
+[`Section`]:#section
+[`MWSResponse`]:#mwsresponse
+[here]:#sections
+
+# Notes
+
+## Throttling
 
 This client **does not** include throttling handling. The reason being that our internal implementation uses `Lambda` functions which are not persistent and therefore instantiate a new client at each function call. This makes a throttling handled via client irrelevant since multiple clients may be instantiated in a short period of time (or even in parallel) to call the same endpoint which leads to a client throttling state not reflecting the actual throttling state of the _MWS API_.
 
@@ -66,11 +159,11 @@ We encourage you to implement your own throttling handling in your infrastructur
 
 _Reminder:_ response headers are exposed via the `mws-client` return value so you may use those to handle an hourly capped endpoint.
 
-**Note on client implementation:**
+## Client implementation
 
 This client uses **_signed requests_** to communicate with the _MWS API_. See docs [here](https://docs.developer.amazonservices.com/en_UK/dev_guide/DG_QueryString.html) and [there](https://docs.developer.amazonservices.com/en_UK/dev_guide/DG_SigningQueryRequest.html) for more details.
 
-# Available sections & endpoints
+# Available sections & endpoints <a name="sections"></a>
 
 **All items listed here point to the MWS API docs**
 
@@ -202,4 +295,3 @@ This client uses **_signed requests_** to communicate with the _MWS API_. See do
   - [`listSubscriptions`](https://docs.developer.amazonservices.com/en_UK/subscriptions/Subscriptions_ListSubscriptions.html)
   - [`updateSubscription`](https://docs.developer.amazonservices.com/en_UK/subscriptions/Subscriptions_UpdateSubscription.html)
   - [`getServiceStatus`](https://docs.developer.amazonservices.com/en_UK/subscriptions/Subscriptions_GetServiceStatus.html)
-  
