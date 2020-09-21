@@ -36,7 +36,7 @@ Module | Description
 
 Name | Description
 ------ | -----------
-[Section] | A section of MWS API. **Note:** all sections and associated endpoints are generated automatically when instanciating a new client
+[Section] | A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client**
 
 ## Typedefs
 
@@ -68,7 +68,7 @@ const MWS = require('mws-client')({
 
 ## Section
 
-A section of MWS API. **Note:** all sections and associated endpoints are generated automatically when instanciating a new client
+A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client**
 
 **Kind**: global class  
 
@@ -81,7 +81,7 @@ Send a request to the given endpoint
 
 | Param | Type | Description |
 | --- | --- | --- |
-| opts | `Object` | Parameters for the API call. See [here] for details regarding parameters for every endpoints. |
+| opts | `Object` | Parameters for the API call. See [here] for details regarding parameters for every endpoints. **Note: list parameters are not supporting arrays yet. You will have to build it in the same way as they appear in the query string of the signed request to MWS API (i.e. `param.1=foo&param.2=bar`)** |
 
 **Example**  
 ```js
@@ -105,7 +105,7 @@ Response received from MWS API
 
 | Name | Type | Description |
 | --- | --- | --- |
-| headers | `Object` | Headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the {external:Fetch} API. |
+| headers | `Object` | Headers of the response received from the _MWS API_. Those are typical `Headers` as you would find in the [`Fetch`] API. |
 | status | `number` | Response status code |
 | body | `Object` | Parsed body from _MWS API_ response |
 
@@ -151,6 +151,7 @@ MWS client
 [`Section`]:#section
 [`MWSResponse`]:#mwsresponse
 [here]:#sections
+[`Fetch`]:https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
 # Notes
 
