@@ -46,6 +46,10 @@ jobs:
       run: npm i
     - name: Tests
       run: npm test
+      env:
+        MWS_KEY_ID: ${{ secrets.MWS_KEY_ID }}
+        MWS_KEY_SECRET: ${{ secrets.MWS_KEY_SECRET }}
+        AMZ_EU_SELLER_ID: ${{ secrets.AMZ_EU_SELLER_ID }}
     - name: Publish to NPM
       uses: JS-DevTools/npm-publish@v1
       with:
