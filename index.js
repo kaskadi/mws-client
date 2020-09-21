@@ -31,7 +31,7 @@ if (Number(nodeVersion.split('.')[0].slice(1)) < 12) {
 
 /**
  *
- * Creates a new client to communicate with Collmex API.
+ * Creates a new client to communicate with Collmex API
  *
  * @module mws-client
  * @typicalname MWS
