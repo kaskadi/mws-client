@@ -32,12 +32,6 @@ Module | Description
 ------ | -----------
 [mws-client] | Creates a new client to communicate with MWS API
 
-## Classes
-
-Name | Description
------- | -----------
-[Section] | A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client**
-
 ## Typedefs
 
 Name | Description
@@ -66,35 +60,11 @@ const MWS = require('mws-client')({
 })
 ```
 
-## Section
+### mws-client~Section
 
 A section of MWS API. **Note: all sections and associated endpoints are generated automatically when instanciating a new client**
 
-**Kind**: global class  
-
-### Section.endpoint(opts)
-
-Send a request to the given endpoint
-
-**Kind**: static method of [`Section`]  
-**Returns**: [`MWSResponse`] - Response received from MWS API  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | `Object` | Parameters for the API call. See [here] for details regarding parameters for every endpoints. **Note: list parameters are not supporting arrays yet. You will have to build it in the same way as they appear in the query string of the signed request to MWS API (i.e. `param.1=foo&param.2=bar`)** |
-
-**Example**  
-```js
-// retrieves inventory from given date for the German marketplace
-const list = await MWS.fulfillmentInventory.listInventorySupply({
-  QueryStartDateTime: new Date(d).toISOString(),
-  ResponseGroup: 'Basic',
-  _marketplace: 'DE'
-})
-
-// retrieve status of the fullfillmentInventory API for the German marketplace
-const status = await MWS.fulfillmentInventory.getServiceStatus({ _marketplace: 'DE' })
-```
+**Kind**: inner class of [`mws-client`]  
 
 ## MWSResponse
 
@@ -137,20 +107,17 @@ MWS client
 
 | Name | Type | Description |
 | --- | --- | --- |
-| Section | [`Section`] | MWS API section |
+| Section | `Section` | MWS API section |
 
 <!-- LINKS -->
 
 [mws-client]:#mws-client
-[Section]:#section
 [MWSResponse]:#mwsresponse
 [Options]:#options
 [MWS]:#mws
 [`MWS`]:#mws
 [`Options`]:#options
-[`Section`]:#section
-[`MWSResponse`]:#mwsresponse
-[here]:#sections
+[`mws-client`]:#mws-client
 [`Fetch`]:https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
 # Notes
