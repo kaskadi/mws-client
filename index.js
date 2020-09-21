@@ -26,12 +26,12 @@ if (Number(nodeVersion.split('.')[0].slice(1)) < 12) {
 /**
  * MWS client
  * @typedef {Class} MWS
- * @property {Section} Section - a section of MWS API
+ * @property {Section} Section - MWS API section
  */
 
 /**
  *
- * Creates a new client to communicate with Collmex API
+ * Creates a new client to communicate with MWS API
  *
  * @module mws-client
  * @typicalname MWS
