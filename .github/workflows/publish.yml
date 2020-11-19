@@ -31,6 +31,18 @@ jobs:
       uses: github/codeql-action/autobuild@v1
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: npm i
+    - name: Test
+      run: npm test
+      env:
+        MWS_KEY_ID: ${{ secrets.MWS_KEY_ID }}
+        MWS_KEY_SECRET: ${{ secrets.MWS_KEY_SECRET }}
+        AMZ_EU_SELLER_ID: ${{ secrets.AMZ_EU_SELLER_ID }}
   generate-docs:
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +62,7 @@ jobs:
         template: docs/template.md
   publish:
     runs-on: ubuntu-latest
-    needs: [analyze, generate-docs]
+    needs: [analyze, test, generate-docs]
     if: github.repository != 'kaskadi/template-npm-pkg' # this is done to skip publish workflow if in template (because the package does not exist and therefore this would fail)
     steps:
     - uses: actions/checkout@v2
@@ -64,12 +76,6 @@ jobs:
         git pull
     - name: Install dependencies
       run: npm i
-    - name: Tests
-      run: npm test
-      env:
-        MWS_KEY_ID: ${{ secrets.MWS_KEY_ID }}
-        MWS_KEY_SECRET: ${{ secrets.MWS_KEY_SECRET }}
-        AMZ_EU_SELLER_ID: ${{ secrets.AMZ_EU_SELLER_ID }}
     - name: Publish to NPM
       uses: JS-DevTools/npm-publish@v1
       with:
