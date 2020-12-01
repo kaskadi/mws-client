@@ -26,6 +26,8 @@ describe('helpers', function () {
   it('should not allow usage of unsupported parser type', function () {
     try {
       require('../..')({ ...baseOpts, parserType: 'hello' })
+      // we shouldn't be here
+      assert(false)
     } catch {
       // we should land here
       assert(true)
