@@ -1,12 +1,19 @@
-/* eslint no-undef: "off" */
-const MWS = require('../')({ AWSAccessKeyId: process.env.MWS_KEY_ID, SellerId: process.env.AMZ_EU_SELLER_ID, MWSAuthToken: process.env.MWS_KEY_SECRET })
+/* eslint-env mocha */
+const assert = require('assert')
+const MWS = require('../..')({ AWSAccessKeyId: process.env.MWS_KEY_ID, SellerId: process.env.AMZ_EU_SELLER_ID, MWSAuthToken: process.env.MWS_KEY_SECRET })
 
-var assert = require('assert')
 describe('MWS.fulfillmentInventory', function () {
+  this.timeout(10000)
   let inventorySupplyData
+  it('should return mockup data when set to', function () {
+    let MWS = require('../..')({ AWSAccessKeyId: process.env.MWS_KEY_ID, SellerId: process.env.AMZ_EU_SELLER_ID, MWSAuthToken: process.env.MWS_KEY_SECRET, mockUp: true })
+    testMockUp(MWS)
+    MWS = require('../..')({ AWSAccessKeyId: process.env.MWS_KEY_ID, SellerId: process.env.AMZ_EU_SELLER_ID, MWSAuthToken: process.env.MWS_KEY_SECRET })
+    MWS.mockUp = true
+    testMockUp(MWS)
+  })
   describe('MWS.fulfillmentInventory.listInventorySupply()', function () {
     it('should return inventory data', async function () {
-      this.timeout(5000)
       let d = new Date()
       d = d - 60 * 60 * 24 * 1000 * 365
       inventorySupplyData = await MWS.fulfillmentInventory.listInventorySupply({ QueryStartDateTime: new Date(d).toISOString(), ResponseGroup: 'Basic', _marketplace: 'DE' })
@@ -15,7 +22,6 @@ describe('MWS.fulfillmentInventory', function () {
   })
   describe('MWS.fulfillmentInventory.listInventorySupplyByNextToken()', function () {
     it('should return next page inventory data if a next token exists', async function () {
-      this.timeout(5000)
       const token = inventorySupplyData.body.ListInventorySupplyResponse.ListInventorySupplyResult.NextToken
       if (token) {
         const ret = await MWS.fulfillmentInventory.listInventorySupplyByNextToken({ NextToken: token, _marketplace: 'DE' })
@@ -47,4 +53,9 @@ function testListInventorySupplyByNextToken (ret) {
 
 function testStatus (ret) {
   assert(ret.body.GetServiceStatusResponse, 'No response or error received from the service')
+}
+
+function testMockUp (MWS) {
+  const ret = MWS.fulfillmentInventory.getServiceStatus({ _marketplace: 'DE' })
+  assert(ret.GetServiceStatusResponse, 'No response or error received from the service')
 }
