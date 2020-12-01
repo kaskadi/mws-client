@@ -35,8 +35,14 @@ jobs:
       uses: github/codeql-action/analyze@v1
   coverage:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [10, 12]
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
     - name: Install dependencies
       run: npm i
     - name: Generate coverage report
