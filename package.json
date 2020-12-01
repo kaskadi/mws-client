@@ -4,7 +4,7 @@
   "description": "an api wrapper for Amazon Marketplace Webservice API",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/utils/set-env.js && mocha test/*.test.js",
+    "test": "mocha test/main.test.js",
     "lint": "standard --fix",
     "coverage": "nyc npm test",
     "add-section": "node tools/section-generator.js"
